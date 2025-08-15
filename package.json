@@ -26,6 +26,7 @@
     "@mui/material": "^5.14.10",
     "@mui/styled-engine-sc": "^5.14.10",
     "@n8tb1t/use-scroll-position": "^2.0.3",
+    "@supabase/supabase-js": "^2.55.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
