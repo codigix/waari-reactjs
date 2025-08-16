@@ -1,64 +1,72 @@
 // PrivateRoute.js
-import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import React from "react";
+import { Route, Navigate } from "react-router-dom";
 
-// export const hasComponentPermission = (permissions, catId, listId) => {
-//   return permissions.some((permission) => permission.catId === catId && permission.listId.includes(listId));
-// };
-
-
+// ✅ Safer version of hasComponentPermission
 export const hasComponentPermission = (permissions, listId) => {
-  // Checkingg For If given component have permissions to access ir nott
-  return permissions.some((permission) =>  permission.listId.includes(listId));
+  if (!Array.isArray(permissions)) {
+    console.warn("Permissions is not an array:", permissions);
+    return false;
+  }
+  return permissions.some(
+    (permission) =>
+      Array.isArray(permission.listId) && permission.listId.includes(listId)
+  );
 };
 
+export const hasMenuPermission = (permissions, content) => {
+  if (!Array.isArray(permissions) || !Array.isArray(content)) {
+    console.warn("Invalid permissions or content:", { permissions, content });
+    return false;
+  }
 
-export const hasMenuPermission = (permissions, content) =>  {
-  
-  const catIds = content.map(content => content.catId)
+  const catIds = content.map((c) => c.catId);
 
   for (let i = 0; i < permissions.length; i++) {
-      // Check if the current object has the specified catId in its listId array
     if (catIds.includes(permissions[i].catId)) {
-          permissions[i].listId.length > 0
-          return true; // Return true if found
+      if (Array.isArray(permissions[i].listId) && permissions[i].listId.length > 0) {
+        return true;
       }
+    }
   }
-  return false; // Return false if not found
-  
-}
+  return false;
+};
 
-export function hasSubMenuPermission(permissions, catId) {
-  // Iterate through each object in the permissions array
-  // debugger
+export const hasSubMenuPermission = (permissions, catId) => {
+  if (!Array.isArray(permissions)) {
+    console.warn("Permissions is not an array:", permissions);
+    return false;
+  }
+
   for (let i = 0; i < permissions.length; i++) {
-      // Check if the current object has the specified catId in its listId array
     if (permissions[i].catId === catId) {
-          permissions[i].listId.length > 0
-          return true; // Return true if found
+      if (Array.isArray(permissions[i].listId) && permissions[i].listId.length > 0) {
+        return true;
       }
+    }
   }
-  return false; // Return false if not found
-}
+  return false;
+};
 
-
-
-
+// Example PrivateRoute usage
+// Make sure to pass permissions and requiredPermissions correctly
+// (requiredPermissions should be an array of { catId, listId })
+//
 // const PrivateRoute = ({ element: Element, permissions, requiredPermissions, ...rest }) => {
-//   const hasPermission = requiredPermissions.every((perm) => hasComponentPermission(permissions, perm.catId, perm.listId));
-
+//   const hasPermission = Array.isArray(requiredPermissions)
+//     ? requiredPermissions.every((perm) =>
+//         hasComponentPermission(permissions, perm.listId)
+//       )
+//     : false;
+//
 //   return (
 //     <Route
 //       {...rest}
 //       element={
-//         hasPermission ? (
-//           <Element />
-//         ) : (
-//           <Navigate to="/access-denied" replace />
-//         )
+//         hasPermission ? <Element /> : <Navigate to="/access-denied" replace />
 //       }
 //     />
 //   );
 // };
-
+//
 // export default PrivateRoute;
