@@ -16,21 +16,15 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   const validation = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
+    initialValues: { email: "", password: "" },
     validationSchema: Yup.object({
       email: Yup.string().email("Invalid email").required("Please enter Email Id"),
-      password: Yup.string()
-        .min(6, "Length of the password should be at least 6 characters")
-        .required("Please enter the Password"),
+      password: Yup.string().min(6, "Password must be at least 6 chars").required("Please enter the Password"),
     }),
     onSubmit: async (values) => {
       try {
         setIsLoading(true);
 
-        // send credentials to Node.js backend which checks Supabase
         const response = await axios.post("http://localhost:3000/api/user-login", {
           email: values.email,
           password: values.password,
@@ -50,7 +44,7 @@ function Login() {
         }
       } catch (error) {
         console.error(error);
-        toast.error(error.response?.data?.message || "Login failed");
+        toast.error(error.response?.data?.error || "Login failed");
       } finally {
         setIsLoading(false);
       }
@@ -59,6 +53,7 @@ function Login() {
 
   return (
     <div className="authincation d-flex flex-column flex-lg-row flex-column-fluid">
+      {/* Left Side */}
       <div className="login-aside text-center d-flex flex-column flex-row-auto">
         <div className="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
           <div className="text-center mb-4 pt-5">
@@ -66,12 +61,10 @@ function Login() {
           </div>
           <h3 className="mb-2">Welcome back!</h3>
         </div>
-        <div
-          className="aside-image"
-          style={{ backgroundImage: "url(" + loginbg + ")" }}
-        ></div>
+        <div className="aside-image" style={{ backgroundImage: "url(" + loginbg + ")" }}></div>
       </div>
 
+      {/* Right Side (Form) */}
       <div className="container flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
         <div className="d-flex justify-content-center h-100 align-items-center">
           <div className="authincation-content style-2">
@@ -89,7 +82,7 @@ function Login() {
 
                     {/* Email */}
                     <div className="form-group mb-3">
-                      <label className="mb-1"><strong>Email</strong></label>
+                      <label><strong>Email</strong></label>
                       <input
                         type="email"
                         name="email"
@@ -106,12 +99,12 @@ function Login() {
 
                     {/* Password */}
                     <div className="form-group mb-3">
-                      <label className="mb-1"><strong>Password</strong></label>
+                      <label><strong>Password</strong></label>
                       <div style={{ position: "relative" }}>
                         <input
                           type={showPassword ? "text" : "password"}
-                          className="form-control"
                           name="password"
+                          className="form-control"
                           placeholder="Type Your Password"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
@@ -131,11 +124,7 @@ function Login() {
 
                     {/* Submit */}
                     <div className="text-center form-group mb-3">
-                      <button
-                        type="submit"
-                        className="btn btn-primary btn-block"
-                        disabled={isLoading}
-                      >
+                      <button type="submit" className="btn btn-primary btn-block" disabled={isLoading}>
                         {isLoading ? "Signing In..." : "Sign In"}
                       </button>
                     </div>
