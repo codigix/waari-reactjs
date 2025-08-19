@@ -26471,11 +26471,11 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
   min-width: 0; }
 
 .authincation {
-  background: var(--rgba-primary-1);
+  /* background: var(--rgba-primary-1); */
   display: flex;
   min-height: 100vh; }
   .authincation .login-aside {
-    background: #fff;
+    /* background: #fff; */
     padding-top: 5rem;
     max-width: 35rem;
     width: 100%;
@@ -26545,9 +26545,12 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
     max-width: 33.125rem;
     width: 100%; }
     .authincation-content.style-2 .form-control {
-      border: 0;
-      border-radius: 0.3125rem;
-      box-shadow: 0rem 0rem 0.9375rem rgba(0, 0, 0, 0.08); }
+        box-shadow: none;
+    background: transparent !important;
+    border: 1px solid #dee2e6;
+    padding: 11px;
+    height: auto;
+    }
     @media only screen and (max-width: 35.9375rem) {
       .authincation-content.style-2 .auth-form {
         padding: 1.875rem 0rem; } }
@@ -26561,7 +26564,8 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
   position: relative;
   z-index: 1;
   border-top-left-radius: 0.3125rem;
-  border-bottom-left-radius: 0.3125rem; }
+  border-bottom-left-radius: 0.3125rem; 
+}
   .welcome-content::after {
     content: '';
     position: absolute;

@@ -77,7 +77,7 @@
 
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Montserrat:wght@500&display=swap'); */
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -284,12 +284,12 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   --bs-white: #fff;
   --bs-gray: #6c757d;
   --bs-gray-dark: #343a40;
-  --bs-primary: #E23428;
+  --bs-primary: #1abc9c;
   --bs-secondary: #135846;
   --bs-success: #68e365;
   --bs-info: #D653C1;
   --bs-warning: #FB9F44;
-  --bs-danger: #E23428;
+  --bs-danger: #1abc9c;
   --bs-light: #c8c8c8;
   --bs-dark: #6e6e6e;
   /* --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -304,7 +304,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 @font-face {
-  font-family: 'Calibri';
+ font-family: "Fira Sans", sans-serif;;
   src: url('./../assets/font/calibri.ttf') format('ttf'),
     /* Modern Browsers */
     url('./../assets/font/calibri.ttf') format('woff');
@@ -321,7 +321,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 body {
   margin: 0;
-  font-family: 'Calibri' !important;
+   font-family: "Fira Sans", sans-serif;
   font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -504,7 +504,7 @@ sup {
 }
 
 a {
-  color: #E23428;
+  color: #1abc9c;
   text-decoration: underline;
 }
 
@@ -2793,8 +2793,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input:checked {
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .form-check-input:checked[type="checkbox"] {
@@ -2806,8 +2806,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input[type="checkbox"]:indeterminate {
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 
@@ -3206,7 +3206,7 @@ textarea.form-control.is-valid {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .invalid-tooltip {
@@ -3232,7 +3232,7 @@ textarea.form-control.is-valid {
 
 .was-validated .form-control:invalid,
 .form-control.is-invalid {
-  border-color: #E23428;
+  border-color: #1abc9c;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23E23428'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23E23428' stroke='none'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -3242,7 +3242,7 @@ textarea.form-control.is-valid {
 
 .was-validated .form-control:invalid:focus,
 .form-control.is-invalid:focus {
-  border-color: #E23428;
+  border-color: #1abc9c;
   box-shadow: 0 0 0 0.25rem rgba(226, 52, 40, 0.25);
 }
 
@@ -3254,7 +3254,7 @@ textarea.form-control.is-invalid {
 
 .was-validated .form-select:invalid,
 .form-select.is-invalid {
-  border-color: #E23428;
+  border-color: #1abc9c;
   padding-right: 4.125rem;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23E23428'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23E23428' stroke='none'/%3e%3c/svg%3e");
   background-position: right 0.75rem center, center right 2.25rem;
@@ -3263,18 +3263,18 @@ textarea.form-control.is-invalid {
 
 .was-validated .form-select:invalid:focus,
 .form-select.is-invalid:focus {
-  border-color: #E23428;
+  border-color: #1abc9c;
   box-shadow: 0 0 0 0.25rem rgba(226, 52, 40, 0.25);
 }
 
 .was-validated .form-check-input:invalid,
 .form-check-input.is-invalid {
-  border-color: #E23428;
+  border-color: #1abc9c;
 }
 
 .was-validated .form-check-input:invalid:checked,
 .form-check-input.is-invalid:checked {
-  background-color: #E23428;
+  background-color: #1abc9c;
 }
 
 .was-validated .form-check-input:invalid:focus,
@@ -3284,7 +3284,7 @@ textarea.form-control.is-invalid {
 
 .was-validated .form-check-input:invalid~.form-check-label,
 .form-check-input.is-invalid~.form-check-label {
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .form-check-inline .form-check-input~.invalid-feedback {
@@ -3334,21 +3334,21 @@ fieldset:disabled .btn {
 
 .btn-primary {
   color: #000;
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-primary:hover {
   color: #000;
-  background-color: #e65248;
-  border-color: #e5483e;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-check:focus+.btn-primary,
 .btn-primary:focus {
   color: #000;
-  background-color: #e65248;
-  border-color: #e5483e;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
   box-shadow: 0 0 0 0.25rem rgba(192, 44, 34, 0.5);
 }
 
@@ -3359,7 +3359,7 @@ fieldset:disabled .btn {
 .show>.btn-primary.dropdown-toggle {
   color: #000;
   background-color: #e85d53;
-  border-color: #e5483e;
+  border-color: #1abc9c;
 }
 
 .btn-check:checked+.btn-primary:focus,
@@ -3373,8 +3373,8 @@ fieldset:disabled .btn {
 .btn-primary:disabled,
 .btn-primary.disabled {
   color: #000;
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-secondary {
@@ -3559,21 +3559,21 @@ fieldset:disabled .btn {
 
 .btn-danger {
   color: #000;
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-danger:hover {
   color: #000;
-  background-color: #e65248;
-  border-color: #e5483e;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-check:focus+.btn-danger,
 .btn-danger:focus {
   color: #000;
-  background-color: #e65248;
-  border-color: #e5483e;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
   box-shadow: 0 0 0 0.25rem rgba(192, 44, 34, 0.5);
 }
 
@@ -3584,7 +3584,7 @@ fieldset:disabled .btn {
 .show>.btn-danger.dropdown-toggle {
   color: #000;
   background-color: #e85d53;
-  border-color: #e5483e;
+  border-color: #1abc9c;
 }
 
 .btn-check:checked+.btn-danger:focus,
@@ -3598,8 +3598,8 @@ fieldset:disabled .btn {
 .btn-danger:disabled,
 .btn-danger.disabled {
   color: #000;
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-light {
@@ -3693,14 +3693,14 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-primary {
-  color: #E23428;
-  border-color: #E23428;
+  color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-outline-primary:hover {
   color: #000;
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-check:focus+.btn-outline-primary,
@@ -3714,8 +3714,8 @@ fieldset:disabled .btn {
 .btn-outline-primary.active,
 .btn-outline-primary.dropdown-toggle.show {
   color: #000;
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-check:checked+.btn-outline-primary:focus,
@@ -3728,7 +3728,7 @@ fieldset:disabled .btn {
 
 .btn-outline-primary:disabled,
 .btn-outline-primary.disabled {
-  color: #E23428;
+  color: #1abc9c;
   background-color: transparent;
 }
 
@@ -3893,14 +3893,14 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-danger {
-  color: #E23428;
-  border-color: #E23428;
+  color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-outline-danger:hover {
   color: #000;
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-check:focus+.btn-outline-danger,
@@ -3914,8 +3914,8 @@ fieldset:disabled .btn {
 .btn-outline-danger.active,
 .btn-outline-danger.dropdown-toggle.show {
   color: #000;
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .btn-check:checked+.btn-outline-danger:focus,
@@ -3928,7 +3928,7 @@ fieldset:disabled .btn {
 
 .btn-outline-danger:disabled,
 .btn-outline-danger.disabled {
-  color: #E23428;
+  color: #1abc9c;
   background-color: transparent;
 }
 
@@ -4413,7 +4413,7 @@ fieldset:disabled .btn {
 .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #E23428;
+  background-color: #1abc9c;
 }
 
 .dropdown-item.disabled,
@@ -4461,7 +4461,7 @@ fieldset:disabled .btn {
 .dropdown-menu-dark .dropdown-item.active,
 .dropdown-menu-dark .dropdown-item:active {
   color: #fff;
-  background-color: #E23428;
+  background-color: #1abc9c;
 }
 
 .dropdown-menu-dark .dropdown-item.disabled,
@@ -4665,7 +4665,7 @@ fieldset:disabled .btn {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
   color: #fff;
-  background-color: #E23428;
+  background-color: #1abc9c;
 }
 
 .nav-fill>.nav-link,
@@ -5413,7 +5413,7 @@ fieldset:disabled .btn {
 .page-link {
   position: relative;
   display: block;
-  color: #E23428;
+  color: #1abc9c;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #dee2e6;
@@ -5448,8 +5448,8 @@ fieldset:disabled .btn {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .page-item.disabled .page-link {
@@ -5656,7 +5656,7 @@ fieldset:disabled .btn {
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: #E23428;
+  background-color: #1abc9c;
   transition: width 0.6s ease;
 }
 
@@ -5737,8 +5737,8 @@ fieldset:disabled .btn {
 .list-group-item.active {
   z-index: 2;
   color: #fff;
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .list-group-item+.list-group-item {
@@ -7074,7 +7074,7 @@ fieldset:disabled .btn {
 }
 
 .link-primary {
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .link-primary:hover,
@@ -7119,7 +7119,7 @@ fieldset:disabled .btn {
 }
 
 .link-danger {
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .link-danger:hover,
@@ -7500,7 +7500,7 @@ fieldset:disabled .btn {
 }
 
 .border-primary {
-  border-color: #E23428 !important;
+  border-color: #1abc9c !important;
 }
 
 .border-secondary {
@@ -7520,7 +7520,7 @@ fieldset:disabled .btn {
 }
 
 .border-danger {
-  border-color: #E23428 !important;
+  border-color: #1abc9c !important;
 }
 
 .border-light {
@@ -8286,7 +8286,7 @@ fieldset:disabled .btn {
 }
 
 .text-primary {
-  color: #E23428 !important;
+  color: #1abc9c !important;
 }
 
 .text-secondary {
@@ -8306,7 +8306,7 @@ fieldset:disabled .btn {
 }
 
 .text-danger {
-  color: #E23428 !important;
+  color: #1abc9c !important;
 }
 
 .text-light {
@@ -8358,7 +8358,7 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-  background-color: #E23428 !important;
+  background-color: #1abc9c !important;
 }
 
 .bg-secondary {
@@ -8378,7 +8378,7 @@ fieldset:disabled .btn {
 }
 
 .bg-danger {
-  background-color: #E23428 !important;
+  background-color: #1abc9c !important;
 }
 
 .bg-light {
@@ -13905,7 +13905,7 @@ svg.pulse-svg .third-circle {
 
 .notification_dropdown .dropdown-menu-end .media>span.danger {
   background: #f9d5d3;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .notification_dropdown .dropdown-menu-end .media .notify-time {
@@ -14015,7 +14015,7 @@ svg.pulse-svg .third-circle {
 .header-profile .dropdown-menu a:hover,
 .header-profile .dropdown-menu a:focus,
 .header-profile .dropdown-menu a.active {
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .header-profile img {
@@ -14042,7 +14042,7 @@ svg.pulse-svg .third-circle {
 }
 
 .header-profile .profile_title {
-  background: #E23428;
+  background: #1abc9c;
   color: #fff;
   padding: 0.625rem 1.25rem;
 }
@@ -17270,7 +17270,7 @@ svg.pulse-svg .third-circle {
 
   [direction="rtl"] .widget-timeline-icon li {
     border-left: 0;
-    border-right: 6px solid #E23428;
+    border-right: 6px solid #1abc9c;
   }
 
   [direction="rtl"] .widget-timeline-icon li a {
@@ -18566,7 +18566,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 }
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -18881,7 +18881,7 @@ The smaller device rules always should write below the bigger device rules
 Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Component
 */
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -19258,7 +19258,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -20707,7 +20707,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   z-index: 9;
   top: 14.75rem;
   right: 100%;
-  background-color: #E23428;
+  background-color: #1abc9c;
   color: #fff;
   display: inline-block;
   height: 3rem;
@@ -20910,7 +20910,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 .sidebar-right #header_color_3+label,
 .sidebar-right #sidebar_color_3+label,
 .sidebar-right #primary_color_3+label {
-  background-color: #E23428;
+  background-color: #1abc9c;
 }
 
 .sidebar-right #nav_header_color_4+label,
@@ -21306,7 +21306,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 .chatbox .img_cont .online_icon.offline {
-  background: #E23428;
+  background: #1abc9c;
 }
 
 .chatbox .card {
@@ -21753,7 +21753,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-nav-headerbg="color_3"][data-theme-version="dark"],
 [data-nav-headerbg="color_3"] {
-  --nav-headbg: #E23428;
+  --nav-headbg: #1abc9c;
 }
 
 [data-nav-headerbg="color_3"][data-theme-version="dark"] .nav-header .brand-logo .brand-title path,
@@ -22606,7 +22606,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-sibebarbg="color_3"][data-theme-version="dark"],
 [data-sibebarbg="color_3"] {
-  --sidebar-bg: #E23428;
+  --sidebar-bg: #1abc9c;
   /* .hamburger .line{
 				background:$white;
 			} */
@@ -22620,7 +22620,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-sibebarbg="color_3"][data-theme-version="dark"] .menu-toggle .dlabnav .metismenu li>ul,
 [data-sibebarbg="color_3"] .menu-toggle .dlabnav .metismenu li>ul {
-  background: #E23428 !important;
+  background: #1abc9c !important;
 }
 
 [data-sibebarbg="color_3"][data-theme-version="dark"] .dlabnav .metismenu ul a:before,
@@ -26230,7 +26230,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-headerbg="color_3"][data-theme-version="dark"],
 [data-headerbg="color_3"] {
-  --headerbg: #E23428;
+  --headerbg: #1abc9c;
 }
 
 [data-headerbg="color_3"][data-theme-version="dark"] .search-area .input-group-text,
@@ -28221,7 +28221,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_3"] {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -28428,28 +28428,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   --rgba-primary-9: rgba(76, 179, 43, 0.9);
 }
 
-[data-typography="opensans"] {
-  font-family: 'Open Sans', sans-serif;
-}
-
-[data-typography="poppins"] {
-  font-family: 'poppins', sans-serif;
-}
-
-[data-typography="cairo"] {
-  font-family: 'Cairo', sans-serif;
-}
-
-[data-typography="roboto"] {
-  font-family: 'Roboto', sans-serif;
-}
-
-[data-typography="helvetica"] {
-  font-family: 'HelveticaNeue';
-}
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -28561,7 +28542,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-theme-version="transparent"] .header-left input:focus {
   box-shadow: none;
-  border-color: #E23428;
+  border-color: #1abc9c;
 }
 
 [data-theme-version="transparent"] .header-left input::placeholder {
@@ -28658,7 +28639,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -29985,7 +29966,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 #external-events [data-class="bg-danger"]::before {
-  background: #E23428;
+  background: #1abc9c;
 }
 
 #external-events [data-class="bg-info"]::before {
@@ -31002,7 +30983,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 .ct-chart .ct-series.ct-series-d .ct-line,
 .ct-chart .ct-series.ct-series-d .ct-point,
 .ct-chart .ct-series.ct-series-d .ct-slice-donut {
-  stroke: #E23428;
+  stroke: #1abc9c;
 }
 
 .ct-chart .ct-series.ct-series-e .ct-bar,
@@ -31575,12 +31556,12 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-theme-version="light"] .input-danger .form-control,
 [data-theme-version="dark"] .input-danger .form-control {
-  border-color: #E23428;
+  border-color: #1abc9c;
 }
 
 [data-theme-version="light"] .input-danger .input-group-text,
 [data-theme-version="dark"] .input-danger .input-group-text {
-  background-color: #E23428;
+  background-color: #1abc9c;
   color: #fff;
 }
 
@@ -31631,14 +31612,14 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-theme-version="light"] .input-danger-o .form-control,
 [data-theme-version="dark"] .input-danger-o .form-control {
-  border-color: #E23428;
+  border-color: #1abc9c;
 }
 
 [data-theme-version="light"] .input-danger-o .input-group-text,
 [data-theme-version="dark"] .input-danger-o .input-group-text {
   background-color: transparent;
-  border-color: #E23428;
-  color: #E23428;
+  border-color: #1abc9c;
+  color: #1abc9c;
 }
 
 [data-theme-version="light"] .input-info-o .form-control,
@@ -31827,7 +31808,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -32056,14 +32037,14 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 .checkbox-danger .form-check-input:focus {
-  border-color: #E23428;
+  border-color: #1abc9c;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(226, 52, 40, 0.25);
 }
 
 .checkbox-danger .form-check-input:checked {
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 [data-theme-version="dark"] .checkbox-danger .form-check-input:checked {
@@ -32272,7 +32253,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 .form-control.is-invalid {
-  border-color: #E23428 !important;
+  border-color: #1abc9c !important;
   border-right: 0rem !important;
 }
 
@@ -32453,7 +32434,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 .picker-data .color-time-picker .react-time-picker__wrapper .react-time-picker__clock-button {
-  background: #E23428;
+  background: #1abc9c;
   color: #b7b7b7;
   padding: .532rem .75rem;
   border-radius: 0 0.75rem 0.75rem 0;
@@ -32474,7 +32455,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 .picker-data .color-time-picker .react-clock__hand__body {
-  background-color: #E23428;
+  background-color: #1abc9c;
 }
 
 .picker-data .color-time-picker .react-time-picker__clock {
@@ -32619,7 +32600,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -33020,7 +33001,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -33050,7 +33031,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -33100,7 +33081,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -33175,7 +33156,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;
@@ -33582,7 +33563,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 .cd-h-timeline__event-title {
   color: var(--cd-color-1);
-  font-family: var(--font-secondary);
+   font-family: "Fira Sans", sans-serif;
   font-weight: 700;
   font-size: var(--text-xxxl);
 }
@@ -33634,7 +33615,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 }
 
 .toast-error {
-  background-color: #E23428;
+  background-color: #1abc9c;
 }
 
 #toast-container>div {
@@ -34046,8 +34027,8 @@ table {
 }
 
 .accordion-danger .accordion-button {
-  background: #E23428;
-  border-color: #E23428;
+  background: #1abc9c;
+  border-color: #1abc9c;
   color: #fff;
   box-shadow: 0 0.9375rem 1.25rem 0 rgba(226, 52, 40, 0.15);
 }
@@ -34060,8 +34041,8 @@ table {
 }
 
 .accordion-danger-solid .accordion-button {
-  background: #E23428;
-  border-color: #E23428;
+  background: #1abc9c;
+  border-color: #1abc9c;
   color: #fff;
   box-shadow: 0 -0.625rem 1.25rem 0 rgba(226, 52, 40, 0.15);
   border-bottom-left-radius: 0;
@@ -34084,7 +34065,7 @@ table {
 }
 
 .accordion-danger-solid .accordion__body {
-  border: 0.125rem solid #E23428;
+  border: 0.125rem solid #1abc9c;
   border-top: none;
   box-shadow: 0 0.9375rem 1.25rem 0 rgba(226, 52, 40, 0.15);
   border-bottom-left-radius: 0.75rem;
@@ -34518,7 +34499,7 @@ table {
 .alert-danger {
   background: #f9d5d3;
   border-color: #f9d5d3;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 [data-theme-version="dark"] .alert-danger {
@@ -34572,7 +34553,7 @@ table {
 }
 
 .alert-alt.alert-danger {
-  border-left: 0.25rem solid #E23428;
+  border-left: 0.25rem solid #1abc9c;
 }
 
 .alert-alt.alert-info {
@@ -34649,9 +34630,9 @@ table {
 }
 
 .alert.alert-danger.solid {
-  background: #E23428;
+  background: #1abc9c;
   color: #fff;
-  border-color: #E23428;
+  border-color: #1abc9c;
 }
 
 .alert.alert-info.solid {
@@ -34713,8 +34694,8 @@ table {
 
 .alert.alert-outline-danger {
   background: transparent;
-  color: #E23428;
-  border-color: #E23428;
+  color: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .alert.alert-outline-dark {
@@ -34826,8 +34807,8 @@ table {
 }
 
 .badge-outline-danger {
-  border: 0.0625rem solid #E23428;
-  color: #E23428;
+  border: 0.0625rem solid #1abc9c;
+  color: #1abc9c;
 }
 
 .badge-outline-light {
@@ -34897,7 +34878,7 @@ table {
 }
 
 .badge-danger {
-  background-color: #E23428;
+  background-color: #1abc9c;
 }
 
 .badge-dark {
@@ -34960,7 +34941,7 @@ table {
 
 .light.badge-danger {
   background-color: #f9d5d3;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 [data-theme-version="dark"] .light.badge-danger {
@@ -35371,11 +35352,11 @@ button:focus {
 .light.btn-danger {
   background-color: #f9d5d3;
   border-color: #f9d5d3;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .light.btn-danger g [fill] {
-  fill: #E23428;
+  fill: #1abc9c;
 }
 
 [data-theme-version="dark"] .light.btn-danger {
@@ -35384,8 +35365,8 @@ button:focus {
 }
 
 .light.btn-danger:hover {
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
   color: #fff;
 }
 
@@ -35519,16 +35500,16 @@ button:focus {
 }
 
 .btn.tp-btn.btn-danger {
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .btn.tp-btn.btn-danger g [fill] {
-  fill: #E23428;
+  fill: #1abc9c;
 }
 
 .btn.tp-btn.btn-danger:hover {
-  background-color: #E23428;
-  border-color: #E23428;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
   color: #fff;
 }
 
@@ -35668,17 +35649,17 @@ button:focus {
 }
 
 .btn.tp-btn-light.btn-danger {
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .btn.tp-btn-light.btn-danger g [fill] {
-  fill: #E23428;
+  fill: #1abc9c;
 }
 
 .btn.tp-btn-light.btn-danger:hover {
   background-color: #f9d5d3;
   border-color: #f9d5d3;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .btn.tp-btn-light.btn-danger:hover g [fill] {
@@ -36815,7 +36796,7 @@ button:focus {
 }
 
 .label-danger {
-  background: #E23428;
+  background: #1abc9c;
   color: #fff;
 }
 
@@ -36834,7 +36815,7 @@ code {
   padding: 0.125rem 0.3125rem;
   border-radius: 0.1875rem;
   background: #f6c0bc;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 [data-theme-version="dark"] code {
@@ -36936,16 +36917,16 @@ code {
 }
 
 .vertical-card__menu--status.closed {
-  background: #E23428;
+  background: #1abc9c;
 }
 
 .vertical-card__menu--status.closed:after {
-  border-top: 0.625rem solid #E23428;
+  border-top: 0.625rem solid #1abc9c;
 }
 
 .vertical-card__menu--status.closed .ribbon-curve {
-  border-top: 0.6875rem solid #E23428;
-  border-bottom: 0.625rem solid #E23428;
+  border-top: 0.6875rem solid #1abc9c;
+  border-bottom: 0.625rem solid #1abc9c;
 }
 
 .vertical-card__menu--desc p {
@@ -37181,13 +37162,13 @@ code {
 }
 
 .pagination.no-bg.pagination-danger li:not(.page-indicator):not(.active):hover .page-link {
-  background: #E23428;
-  border-color: #E23428;
+  background: #1abc9c;
+  border-color: #1abc9c;
 }
 
 [data-theme-version="dark"] .pagination.no-bg.pagination-danger li:not(.page-indicator):not(.active):hover .page-link {
-  background: #E23428;
-  border-color: #E23428;
+  background: #1abc9c;
+  border-color: #1abc9c;
 }
 
 .pagination.no-bg.pagination-info li:not(.page-indicator):not(.active):hover .page-link {
@@ -37237,19 +37218,19 @@ code {
 .pagination-danger .page-item .page-link {
   background: #f9d5d3;
   border-color: #f9d5d3;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 [data-theme-version="dark"] .pagination-danger .page-item .page-link {
   background: rgba(226, 52, 40, 0.15);
   border-color: transparent;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .pagination-danger .page-item:hover .page-link,
 .pagination-danger .page-item.active .page-link {
-  background: #E23428;
-  border-color: #E23428;
+  background: #1abc9c;
+  border-color: #1abc9c;
   box-shadow: 0 0.625rem 1.25rem 0rem rgba(226, 52, 40, 0.2);
 }
 
@@ -37476,7 +37457,7 @@ code {
 }
 
 .progress-bar-danger {
-  background-color: #E23428;
+  background-color: #1abc9c;
 }
 
 .progress-bar-warning {
@@ -37596,7 +37577,7 @@ code {
   top: 0.875rem;
   width: 6.875rem;
   height: 1.5625rem;
-  background-color: #E23428;
+  background-color: #1abc9c;
   clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
   transform: rotate(-45deg);
   color: #fff;
@@ -38137,7 +38118,7 @@ code {
 }
 
 .widget-timeline .timeline-badge.danger:after {
-  background-color: #E23428 !important;
+  background-color: #1abc9c !important;
   box-shadow: 0 0.3125rem 0.625rem 0 rgba(226, 52, 40, 0.2);
 }
 
@@ -38241,11 +38222,11 @@ code {
 }
 
 .widget-timeline.style-1 .timeline .timeline-badge.danger+.timeline-panel {
-  border-color: #E23428;
+  border-color: #1abc9c;
 }
 
 .widget-timeline.style-1 .timeline .timeline-badge.danger+.timeline-panel:after {
-  background: #E23428;
+  background: #1abc9c;
 }
 
 .widget-timeline.style-1 .timeline .timeline-badge.info+.timeline-panel {
@@ -38746,7 +38727,7 @@ code {
 }
 
 .tdl-holder label:hover a {
-  color: #E23428;
+  color: #1abc9c;
 }
 
 .tdl-holder label a {
@@ -39083,7 +39064,7 @@ code {
 
 .widget-media .timeline .timeline-panel .media-danger {
   background: #f9d5d3;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 [data-theme-version="dark"] .widget-media .timeline .timeline-panel .media-danger {
@@ -39315,7 +39296,7 @@ code {
 }
 
 .table .thead-danger th {
-  background-color: #E23428;
+  background-color: #1abc9c;
   color: #fff;
 }
 
@@ -39429,7 +39410,7 @@ code {
 .table-danger>th,
 .table-danger>td {
   background-color: #f9d5d3;
-  color: #E23428;
+  color: #1abc9c;
 }
 
 [data-theme-version="dark"] .table-danger,
@@ -39866,13 +39847,16 @@ table.dataTable.display tbody td {
 }
 
 .authincation {
-  background: var(--rgba-primary-1);
+  /* background: var(--rgba-primary-1); */
+  background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/images/waari-banner.jpg");
   display: flex;
   min-height: 100vh;
+      background-position: center;
+    background-size: cover;
 }
 
 .authincation .login-aside {
-  background: #fff;
+  /* background: #fff; */
   padding-top: 5rem;
   max-width: 35rem;
   width: 100%;
@@ -39970,9 +39954,11 @@ table.dataTable.display tbody td {
 }
 
 .authincation-content.style-2 .form-control {
-  border: 0;
-  border-radius: 0.3125rem;
-  box-shadow: 0rem 0rem 0.9375rem rgba(0, 0, 0, 0.08);
+      box-shadow: none;
+    background: transparent !important;
+    border: 1px solid #dee2e6;
+    padding: 11px;
+    height: auto;
 }
 
 @media only screen and (max-width: 35.9375rem) {
@@ -40049,7 +40035,10 @@ table.dataTable.display tbody td {
 }
 
 .auth-form {
-  padding: 3.125rem 3.125rem;
+      padding:2rem;
+    box-shadow: 0 0.75rem 6rem rgba(56, 65, 74, 0.03);
+    background: white;
+    border-radius: 0.25rem;
 }
 
 @media only screen and (max-width: 35.9375rem) {
@@ -40570,19 +40559,19 @@ ul {
 .MuiPickerDTTabs-tabs,
 .MuiPickersDay-daySelected,
 .MuiPickersDay-daySelected:hover {
-  background-color: #E23428 !important;
+  background-color: #1abc9c !important;
 }
 
 .MuiPickersClockPointer-thumb {
-  border: 14px solid #E23428 !important;
+  border: 14px solid #1abc9c !important;
 }
 
 .MuiButton-textPrimary {
-  color: #E23428 !important;
+  color: #1abc9c !important;
 }
 
 .MuiInput-underline::after {
-  border-bottom: 2px solid #E23428 !important;
+  border-bottom: 2px solid #1abc9c !important;
 }
 
 .guest-calendar .reportrange {
@@ -44501,7 +44490,7 @@ ul {
 
   [direction="rtl"] .widget-timeline-icon li {
     border-left: 0;
-    border-right: 6px solid #E23428;
+    border-right: 6px solid #1abc9c;
   }
 
   [direction="rtl"] .widget-timeline-icon li a {
@@ -44766,7 +44755,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 }
 
 :root {
-  --primary: #E23428;
+  --primary: #1abc9c;
   --secondary: #135846;
   --primary-hover: #bd241a;
   --primary-dark: #64130d;

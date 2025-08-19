@@ -12,7 +12,7 @@
 
 
 .authincation{
-	background:var(--rgba-primary-1);
+	// background:var(--rgba-primary-1);
 	display:flex;
 	min-height: 100vh;
 	.login-aside{
@@ -183,7 +183,10 @@
 }
 
 .auth-form{
-    padding: 3.125rem 3.125rem;
+        padding:2rem;
+    box-shadow: 0 0.75rem 6rem rgba(56, 65, 74, 0.03);
+    background: white;
+    border-radius: 0.25rem;
 	@include respond('phone') {
 		padding: 1.875rem;
 	}	

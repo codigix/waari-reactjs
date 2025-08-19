@@ -33,22 +33,22 @@ function App() {
 		}
 	}, []);
 
-	useEffect(() => {
-		const fetchPermissions = async () => {
-			try {
-				const response = await get(`/test-permission`);
-        // console.log( "permissions",response.data.permissions)
-				dispatch(setPermissions(response?.data?.permissions));
-			} catch (error) {
-				console.log(error);
-			}
-		};
+	// useEffect(() => {
+	// 	const fetchPermissions = async () => {
+	// 		try {
+	// 			const response = await get(`/test-permission`);
+    //     // console.log( "permissions",response.data.permissions)
+	// 			dispatch(setPermissions(response?.data?.permissions));
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 		}
+	// 	};
 		
-    if (token) {
-      fetchPermissions();
-    }
+    // if (token) {
+    //   fetchPermissions();
+    // }
     
-	}, []);
+	// }, []);
 
 	const routeblog = (
 		<Routes>

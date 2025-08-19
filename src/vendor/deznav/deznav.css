@@ -496,14 +496,6 @@ li {
 .btn-primary, .badge-primary {
   background-color: #5D78FF; }
 
-[data-typography="opensans"] {
-  font-family: 'Open Sans', sans-serif; }
-
-[data-typography="poppins"] {
-  font-family: 'Poppins', sans-serif; }
-
-[data-typography="roboto"] {
-  font-family: 'Roboto', sans-serif; }
 
 .nav-label {
   padding: 0.8125rem 1.5625rem;

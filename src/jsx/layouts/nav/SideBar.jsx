@@ -117,7 +117,7 @@ const SideBar = () => {
         }
     };
 
-    useEffect(() => {
+    useEffect(() => {                       
         // Function to fetch the counts
 
         // Initial call to fetch da
