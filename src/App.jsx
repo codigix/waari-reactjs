@@ -36,8 +36,8 @@ function App() {
 	useEffect(() => {
 		const fetchPermissions = async () => {
 			try {
-				const response = await get(`/test-permission`);
-        // console.log( "permissions",response.data.permissions)
+				const response = await get(`/role/test-permission`);
+         console.log( "permissions",response.data.permissions)
 				dispatch(setPermissions(response?.data?.permissions));
 			} catch (error) {
 				console.log(error);
