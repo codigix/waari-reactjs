@@ -18,7 +18,7 @@ const Home = () => {
 
   const getGroupToursCount = async () => {
     try {
-      const response = await get(`/group-tour-count`);
+      const response = await get(`/billing/group-tour-count`);
       setGroupToursCount(response.data?.groupTourCount);
     } catch (error) {
       console.log(error);
@@ -27,7 +27,7 @@ const Home = () => {
 
   const getNumberOfGuest = async () => {
     try {
-      const response = await get(`/no-of-guests`);
+      const response = await get(`/billing/no-of-guests`);
       setNumberOfGuest(response.data?.guestCount);
     } catch (error) {
       console.log(error);

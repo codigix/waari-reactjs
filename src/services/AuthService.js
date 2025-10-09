@@ -3,7 +3,7 @@ import swal from 'sweetalert';
 
 // Environment Variables
 const FIREBASE_API_KEY = import.meta.env.VITE_FIREBASE_API_KEY || '';
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3000/api';
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 /* =========================
    Firebase Auth Functions

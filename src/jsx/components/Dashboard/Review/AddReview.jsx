@@ -34,9 +34,13 @@ const validationSchema = Yup.object().shape({
         .required("Tour code is required")
         .matches(/^[a-zA-Z0-9]+$/, "Tour code must be alphanumeric"),
 
+    // imageUrl: Yup.string()
+    //     .required("Image URL is required")
+    //     .url("Invalid URL format for the image"),
     imageUrl: Yup.string()
-        .required("Image URL is required")
-        .url("Invalid URL format for the image"),
+    .nullable()              // allows null
+    .notRequired()           // field is optional
+    .url("Invalid URL format for the image"),
 
     title: Yup.string()
         .required("Title is required")
@@ -80,14 +84,15 @@ const AddReview = () => {
                 setIsLoading(true);
                 const data = {
                     tourCode: values.tourCode,
-                    imageUrl: values.imageUrl,
+                    // imageUrl: values.imageUrl,
+                    ...(values.imageUrl && { imageUrl: values.imageUrl }),
                     title: values.title,
                     rating: values.rating,
                     content: values.content,
                     customerName: values.customerName,
                     type: values.type.value,
                 };
-                const result = await post("add-review", data);
+                const result = await post(`${import.meta.env.VITE_WAARI_BASEURL}/add-review`, data);
                 toast.success(result?.data?.message);
                 navigate("/reviews-list");
                 setIsLoading(false);
@@ -118,7 +123,8 @@ const AddReview = () => {
     const isValidImageSize = (size) => {
         const { width, height } = size;
 
-        return width === requiredSizeForBgImage.width && height === requiredSizeForBgImage.height;
+        // return width === requiredSizeForBgImage.width && height === requiredSizeForBgImage.height;
+        return true;
     };
 
     const getFileLink = async (file) => {

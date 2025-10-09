@@ -6,7 +6,7 @@ import CryptoJS from 'crypto-js';
 // Change this in .env files:
 // VITE_WAARI_BASEURL=http://localhost:3000/api   (for development)
 // VITE_WAARI_BASEURL=https://erp.travelwithwaari.com/api/api  (for production)
-const url = import.meta.env.VITE_WAARI_BASEURL || 'http://localhost:3000/api';
+const url = import.meta.env.VITE_WAARI_BASEURL ;
 
 console.log("API Base URL:", url);
 

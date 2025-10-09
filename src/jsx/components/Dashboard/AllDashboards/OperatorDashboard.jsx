@@ -38,7 +38,7 @@ const Home = () => {
   const getBookingSalesAmountGraphCtData = async () => {
     try {
       setIsTableLoading(true)
-      const result = await get(`booking-sales-amount-graph-ct`);
+      const result = await get(`/billing/booking-sales-amount-graph-ct`);
 
       setBookingSalesAmountGraphCtData(result.data);
       
@@ -52,7 +52,7 @@ const Home = () => {
 
   const getProfitPerMonthData = async () => {
     try {
-      const result = await get(`profit-ct`);
+      const result = await get(`/billing/profit-ct`);
       setProfitCountsCt(result.data);
       
     } catch (error) {
@@ -62,7 +62,7 @@ const Home = () => {
 
   const getListSalesProfit = async () => {
     try {
-      const result = await get(`list-sales-profit?page=${page}&perPage=${perPage}`);
+      const result = await get(`/billing/list-sales-profit?page=${page}&perPage=${perPage}`);
       setSalesProfitData(result.data?.data);
       
     } catch (error) {

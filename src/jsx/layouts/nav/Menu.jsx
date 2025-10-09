@@ -182,33 +182,33 @@ export const MenuList = [
     },
 
     {
-		title: "Presales Enquiry",
-		classsChange: "mm-collapse",
-		iconStyle: (
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				height="1em"
-				viewBox="0 0 512 512"
-			>
-				<path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
-			</svg>
-		),
-		catId: null,
-		content: [
-			{
-				title: "Group Tours",
-				to: "presale-group-tour-new",
-				catId: 48,
-			},
-			{
-				title: "Customized Tours",
-				to: "presale-customized-tour-new",
-				catId: 49,
-			},
-		
-		],
-	},
-    
+        title: "Presales Enquiry",
+        classsChange: "mm-collapse",
+        iconStyle: (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="1em"
+                viewBox="0 0 512 512"
+            >
+                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+            </svg>
+        ),
+        catId: null,
+        content: [
+            {
+                title: "Group Tours",
+                to: "presale-group-tour-new",
+                catId: 48,
+            },
+            {
+                title: "Customized Tours",
+                to: "presale-customized-tour-new",
+                catId: 49,
+            },
+
+        ],
+    },
+
     {
         title: "Future Tour Enquiries",
         classsChange: "mm-collapse",
@@ -315,17 +315,17 @@ export const MenuList = [
             },
         ],
     },
-    
+
     {
         title: "Git Operation",
         to: "git-operation-tours-list",
         classsChange: "mm-collapse",
         to: "git-operation-tours-list",
         iconStyle: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-blend"><circle cx="9" cy="9" r="7"/><circle cx="15" cy="15" r="7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-blend"><circle cx="9" cy="9" r="7" /><circle cx="15" cy="15" r="7" /></svg>
         ),
         catId: 56,
-       
+
     },
     {
         title: "Guests Information ",
@@ -501,7 +501,7 @@ export const MenuList = [
                 to: "users-list",
                 catId: 25,
             },
-        ],  
+        ],
     },
     {
         title: "Roles and Permissions",
@@ -627,7 +627,7 @@ export const MenuList = [
     // 	],
     // },
 
-    
+
     {
         title: "Feedback List",
         to: "feedback-list",
@@ -689,7 +689,7 @@ export const MenuList = [
                 to: "sales-offices-list",
                 catId: 53,
             },
-        ],  
+        ],
     },
 
     // {

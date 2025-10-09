@@ -16,8 +16,7 @@ const PaymentGrouptour = () => {
   const url = import.meta.env.VITE_WAARI_BASEURL;
   const [imageUrl, setImageUrl] = useState(null);
   const [isLoadingImage, setIsLoadingImages] = useState(false);
-  const { permissions } = useSelector(state => state.auth)
-
+  const { permissions } = useSelector((state) => state.auth);
 
   const uploadFile = async (e) => {
     try {
@@ -28,13 +27,15 @@ const PaymentGrouptour = () => {
       const responseData = await axios.post(
         `
           ${url}/image-upload`,
-        formData,
+        formData
       );
       setIsLoadingImages(false);
       setImageUrl(responseData?.data?.image_url);
-      validation.setFieldValue('transactionproof', responseData?.data?.image_url)
-      toast.success("Image added successfully")
-
+      validation.setFieldValue(
+        "transactionproof",
+        responseData?.data?.image_url
+      );
+      toast.success("Image added successfully");
     } catch (error) {
       setIsLoadingImages(false);
       toast.error(error?.response?.data?.message || "something went wrong");
@@ -48,9 +49,7 @@ const PaymentGrouptour = () => {
   const [groupTourBillDetails, setGroupTourBillDetails] = useState([]);
   const getGroupTourBillDetails = async () => {
     try {
-      const response = await get(
-        `/view-bill-group-tour?enquiryGroupId=${id}`
-      );
+      const response = await get(`/view-bill-group-tour?enquiryGroupId=${id}`);
       setGroupTourBillDetails(response?.data?.data);
       // console.log(response)
     } catch (error) {
@@ -78,34 +77,43 @@ const PaymentGrouptour = () => {
       transactionproof: "",
       transactionid: "",
     },
+    // validationSchema: Yup.object({
+    //   newpaymentamount: Yup.string().required("Enter The New Payment Amount"),
+    //   paymentMode: Yup.object().required("Select Payment Mode"),
+    //   onlinemode: Yup.object().when('paymentMode', {
+    //     is: (mode) => mode.value == 1, // Apply validation when paymentMode is 'online'
+    //     then: Yup.object().required("Select The Online Mode"),
+    //     otherwise: Yup.object(),
+    //   }),
+    //   bankname: Yup.string().when('paymentMode', {
+    //     is: (mode) => mode.value == 2, // Apply validation when paymentMode is 'online'
+    //     then: Yup.string().required("Enter The Bank Name"),
+    //     otherwise: Yup.string(),
+    //   }),
+    //   chequeno: Yup.string().when('paymentMode', {
+    //     is: (mode) => mode.value == 2, // Apply validation when paymentMode is not 'online'
+    //     then: Yup.string().required("Enter The Cheque No."),
+    //     otherwise: Yup.string(),
+    //   }),
+    //   dateofpayment: Yup.string().required("Enter The Date of payment"),
+
+    //   transactionproof: Yup.string().required("Upload The Transaction Proof"),
+    //   transactionid: Yup.string().when('paymentMode', {
+    //     is: (mode) => mode.value == 1, // Apply validation when paymentMode is 'online'
+    //     then: Yup.string().required("Enter The Transaction Id"),
+    //     otherwise: Yup.string(),
+    //   })
+    // }),
     validationSchema: Yup.object({
-      newpaymentamount: Yup.string().required("Enter The New Payment Amount"),
-      paymentMode: Yup.object().required("Select Payment Mode"),
-      onlinemode: Yup.object().when('paymentMode', {
-        is: (mode) => mode.value == 1, // Apply validation when paymentMode is 'online'
-        then: Yup.object().required("Select The Online Mode"),
-        otherwise: Yup.object(),
-      }),
-      bankname: Yup.string().when('paymentMode', {
-        is: (mode) => mode.value == 2, // Apply validation when paymentMode is 'online'
-        then: Yup.string().required("Enter The Bank Name"),
-        otherwise: Yup.string(),
-      }),
-      chequeno: Yup.string().when('paymentMode', {
-        is: (mode) => mode.value == 2, // Apply validation when paymentMode is not 'online'
-        then: Yup.string().required("Enter The Cheque No."),
-        otherwise: Yup.string(),
-      }),
-      dateofpayment: Yup.string().required("Enter The Date of payment"),
-
-      transactionproof: Yup.string().required("Upload The Transaction Proof"),
-      transactionid: Yup.string().when('paymentMode', {
-        is: (mode) => mode.value == 1, // Apply validation when paymentMode is 'online'
-        then: Yup.string().required("Enter The Transaction Id"),
-        otherwise: Yup.string(),
-      })
+      newpaymentamount: Yup.string(),
+      paymentMode: Yup.object(),
+      onlinemode: Yup.object(),
+      bankname: Yup.string(),
+      chequeno: Yup.string(),
+      dateofpayment: Yup.string(),
+      transactionproof: Yup.string(),
+      transactionid: Yup.string(),
     }),
-
     onSubmit: async (values, { resetForm }) => {
       let data = {
         enquiryGroupId: id,
@@ -120,16 +128,16 @@ const PaymentGrouptour = () => {
       };
 
       try {
-        setIsLoading(true)
-        const response = await post(`receivebill-group-tour`, data)
-        console.log(response)
-        toast.success(response?.data?.message)
-        getGroupTourBillDetails()
-        setIsLoading(false)
-        resetForm()
+        setIsLoading(true);
+        const response = await post(`receivebill-group-tour`, data);
+        console.log(response);
+        toast.success(response?.data?.message);
+        getGroupTourBillDetails();
+        setIsLoading(false);
+        resetForm();
       } catch (error) {
-        setIsLoading(false)
-        console.log(error)
+        setIsLoading(false);
+        console.log(error);
       }
     },
   });
@@ -178,18 +186,18 @@ const PaymentGrouptour = () => {
   };
   useEffect(() => {
     // While view farmer page is active, the yadi tab must also activated
-    const pathArray = (window.location.href).split("/")
-    const path = pathArray[pathArray.length - 1]
-    let element = document.getElementById("confirm-group-tour")
+    const pathArray = window.location.href.split("/");
+    const path = pathArray[pathArray.length - 1];
+    let element = document.getElementById("confirm-group-tour");
     if (element) {
-      element.classList.add("mm-active1") // Add the 'active' class to the element
+      element.classList.add("mm-active1"); // Add the 'active' class to the element
     }
     return () => {
       if (element) {
-        element.classList.remove("mm-active1") // remove the 'active' class to the element when change to another page
+        element.classList.remove("mm-active1"); // remove the 'active' class to the element when change to another page
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <>
@@ -201,7 +209,7 @@ const PaymentGrouptour = () => {
           return false;
         }}
       >
-        <div className="card"  style={{ marginBottom: '40px' }}>
+        <div className="card" style={{ marginBottom: "40px" }}>
           <div className="row page-titles mx-0 fixed-top-breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
@@ -233,7 +241,6 @@ const PaymentGrouptour = () => {
                   <div className="view-details">
                     <h6>{groupTourBillDetails?.billingName}</h6>
                   </div>
-
                 </div>
               </div>
               <div className="mb-2 row">
@@ -299,31 +306,46 @@ const PaymentGrouptour = () => {
                           </label>
                         </div>
                         <div className="col-md-5">
-
                           <div className="view-details">
                             <h6>{item?.advancePayment}</h6>
                           </div>
                         </div>
                         <div className="col-md-4">
                           <div className="">
-                            <div key={index}>{item.status == 0 ? <>
-                              <badge className="badge badge-warning" >
-                                Pending
-                              </badge>
-                            </> :
-                              <>
-                                <div className="d-flex  mt-2 mt-lg-0 mt-md-0">
-
-                                  <badge className="badge badge-success" >
-                                    Confirm
+                            <div key={index}>
+                              {item.status == 0 ? (
+                                <>
+                                  <badge className="badge badge-warning">
+                                    Pending
                                   </badge>
+                                </>
+                              ) : (
+                                <>
+                                  <div className="d-flex  mt-2 mt-lg-0 mt-md-0">
+                                    <badge className="badge badge-success">
+                                      Confirm
+                                    </badge>
 
-                                  {hasComponentPermission(permissions, 39) && (<Link to={`/receipt/${id}/${item.groupPaymentDetailId}`} className="btn btn-secondary add-btn btn-sm" style={{ height: "32px", margin: "0px 10px 0px 0px", lineHeight: "1" }}>
-                                    View Receipt
-                                  </Link>)}
-                                </div>
-                              </>
-                            }</div>
+                                    {hasComponentPermission(
+                                      permissions,
+                                      39
+                                    ) && (
+                                      <Link
+                                        to={`/receipt/${id}/${item.groupPaymentDetailId}`}
+                                        className="btn btn-secondary add-btn btn-sm"
+                                        style={{
+                                          height: "32px",
+                                          margin: "0px 10px 0px 0px",
+                                          lineHeight: "1",
+                                        }}
+                                      >
+                                        View Receipt
+                                      </Link>
+                                    )}
+                                  </div>
+                                </>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -340,232 +362,273 @@ const PaymentGrouptour = () => {
                   </div>
                 </div>
                 <div className="col-md-4">
-                  {
-                    (groupTourBillDetails?.isPaymentDone &&
-                      hasComponentPermission(permissions, 132)) && (<div className="col-md-4">
-                        <Link to={`/invoice/${id}`} className="btn btn-secondary add-btn btn-sm" style={{ height: "32px", margin: "0px 10px 0px 0px", lineHeight: "1" }}>
+                  {groupTourBillDetails?.isPaymentDone &&
+                    hasComponentPermission(permissions, 132) && (
+                      <div className="col-md-4">
+                        <Link
+                          to={`/invoice/${id}`}
+                          className="btn btn-secondary add-btn btn-sm"
+                          style={{
+                            height: "32px",
+                            margin: "0px 10px 0px 0px",
+                            lineHeight: "1",
+                          }}
+                        >
                           Invoice
                         </Link>
                       </div>
-                    )
-                  }
+                    )}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {
-          (!groupTourBillDetails?.isPaymentDone && hasComponentPermission(permissions, 40)) &&
-          <div className="card">
-            <div className="card-header card-header-second">
-              <div className="card-title h5">New Payment Received</div>
-            </div>
-            <div className="card-body">
-              <div className="mb-2 row">
-                <div className="col-md-3">
-                  <label className="form-label">New Payment Amount<span className="error-star">*</span></label>
-                </div>
-                <div className="col-md-5">
-                  <input
-                    type="number"
-                    className="form-control col-md-6"
-                    placeholder=""
-                    min="1"
-                    step="any"
-                    name="newpaymentamount"
-                    onChange={validation.handleChange}
-                    onBlur={validation.handleBlur}
-                    value={validation.values.newpaymentamount}
-                  />
-                  {validation.touched.newpaymentamount &&
+        {!groupTourBillDetails?.isPaymentDone &&
+          hasComponentPermission(permissions, 40) && (
+            <div className="card">
+              <div className="card-header card-header-second">
+                <div className="card-title h5">New Payment Received</div>
+              </div>
+              <div className="card-body">
+                <div className="mb-2 row">
+                  <div className="col-md-3">
+                    <label className="form-label">
+                      New Payment Amount<span className="error-star">*</span>
+                    </label>
+                  </div>
+                  <div className="col-md-5">
+                    <input
+                      type="number"
+                      className="form-control col-md-6"
+                      placeholder=""
+                      min="1"
+                      step="any"
+                      name="newpaymentamount"
+                      onChange={validation.handleChange}
+                      onBlur={validation.handleBlur}
+                      value={validation.values.newpaymentamount}
+                    />
+                    {validation.touched.newpaymentamount &&
                     validation.errors.newpaymentamount ? (
-                    <span className="error">
-                      {validation.errors.newpaymentamount}
-                    </span>
-                  ) : null}
+                      <span className="error">
+                        {validation.errors.newpaymentamount}
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
-              </div>
-              <div className="row mb-2 form-group">
-                <div className="col-md-3">
-                  <label className="form-label">Payment mode<span className="error-star">*</span></label>
-                </div>
-                <div className="col-md-5">
-                  <Select
-                    styles={customStyles}
-                    className="basic-single"
-                    classNamePrefix="select"
-                    name="paymentMode"
-                    options={paymentMode}
-                    onChange={(selectedOption) => {
-                      validation.setFieldValue(
-                        "paymentMode",
-                        selectedOption
-                      );
-                      validation.setFieldValue('onlinemode', '')
-                    }}
-                    onBlur={validation.handleBlur}
-                    value={validation.values.paymentMode}
-                  />
-                  {validation.touched.paymentMode &&
-                    validation.errors.paymentMode ? (
-                    <span className="error">{validation.errors.paymentMode}</span>
-                  ) : null}
-                </div>
-              </div>
-              {validation.values.paymentMode.value == 1 && (
                 <div className="row mb-2 form-group">
                   <div className="col-md-3">
-                    {<label className="form-label">Online Transaction<span className="error-star">*</span></label>}
+                    <label className="form-label">
+                      Payment mode<span className="error-star">*</span>
+                    </label>
                   </div>
                   <div className="col-md-5">
                     <Select
                       styles={customStyles}
                       className="basic-single"
                       classNamePrefix="select"
-                      name="onlinemode"
-                      options={onlinemode}
+                      name="paymentMode"
+                      options={paymentMode}
                       onChange={(selectedOption) => {
-                        validation.setFieldValue(
-                          "onlinemode",
-                          selectedOption
-                        ); // Extract the 'value' property
+                        validation.setFieldValue("paymentMode", selectedOption);
+                        validation.setFieldValue("onlinemode", "");
                       }}
                       onBlur={validation.handleBlur}
-                      value={validation.values.onlinemode}
+                      value={validation.values.paymentMode}
                     />
-                    {validation.touched.onlinemode &&
-                      validation.errors.onlinemode ? (
+                    {validation.touched.paymentMode &&
+                    validation.errors.paymentMode ? (
                       <span className="error">
-                        {validation.errors.onlinemode}
+                        {validation.errors.paymentMode}
                       </span>
                     ) : null}
                   </div>
                 </div>
-              )}
+                {validation.values.paymentMode.value == 1 && (
+                  <div className="row mb-2 form-group">
+                    <div className="col-md-3">
+                      {
+                        <label className="form-label">
+                          Online Transaction
+                          <span className="error-star">*</span>
+                        </label>
+                      }
+                    </div>
+                    <div className="col-md-5">
+                      <Select
+                        styles={customStyles}
+                        className="basic-single"
+                        classNamePrefix="select"
+                        name="onlinemode"
+                        options={onlinemode}
+                        onChange={(selectedOption) => {
+                          validation.setFieldValue(
+                            "onlinemode",
+                            selectedOption
+                          ); // Extract the 'value' property
+                        }}
+                        onBlur={validation.handleBlur}
+                        value={validation.values.onlinemode}
+                      />
+                      {validation.touched.onlinemode &&
+                      validation.errors.onlinemode ? (
+                        <span className="error">
+                          {validation.errors.onlinemode}
+                        </span>
+                      ) : null}
+                    </div>
+                  </div>
+                )}
 
-              {validation.values.paymentMode?.value == 2 && <div className="mb-2 row">
-                <div className="col-md-3">
-                  <label className="form-label">Bank Name{validation.values.paymentMode?.value == 2 && <span className="error-star">*</span>}</label>
-                </div>
-                <div className="col-md-5">
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="bankname"
-                    placeholder=""
-                    onChange={validation.handleChange}
-                    onBlur={validation.handleBlur}
-                    value={validation.values.bankname}
-                  />
-                  {validation.touched.bankname && validation.errors.bankname ? (
-                    <span className="error">{validation.errors.bankname}</span>
-                  ) : null}
-                </div>
-              </div>}
+                {validation.values.paymentMode?.value == 2 && (
+                  <div className="mb-2 row">
+                    <div className="col-md-3">
+                      <label className="form-label">
+                        Bank Name
+                        {validation.values.paymentMode?.value == 2 && (
+                          <span className="error-star">*</span>
+                        )}
+                      </label>
+                    </div>
+                    <div className="col-md-5">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="bankname"
+                        placeholder=""
+                        onChange={validation.handleChange}
+                        onBlur={validation.handleBlur}
+                        value={validation.values.bankname}
+                      />
+                      {validation.touched.bankname &&
+                      validation.errors.bankname ? (
+                        <span className="error">
+                          {validation.errors.bankname}
+                        </span>
+                      ) : null}
+                    </div>
+                  </div>
+                )}
 
-              {validation.values.paymentMode?.value == 2 &&
+                {validation.values.paymentMode?.value == 2 && (
+                  <div className="mb-2 row">
+                    <div className="col-md-3">
+                      <label className="form-label">
+                        Cheque No.<span className="error-star">*</span>
+                      </label>
+                    </div>
+                    <div className="col-md-5">
+                      <input
+                        type="number"
+                        className="form-control"
+                        name="chequeno"
+                        onChange={validation.handleChange}
+                        onBlur={validation.handleBlur}
+                        value={validation.values.chequeno}
+                      />
+                      {validation.touched.chequeno &&
+                      validation.errors.chequeno ? (
+                        <span className="error">
+                          {validation.errors.chequeno}
+                        </span>
+                      ) : null}
+                    </div>
+                  </div>
+                )}
+
                 <div className="mb-2 row">
                   <div className="col-md-3">
-                    <label className="form-label">Cheque No.<span className="error-star">*</span></label>
+                    <label className="form-label">
+                      Date of payment<span className="error-star">*</span>
+                    </label>
                   </div>
                   <div className="col-md-5">
                     <input
-                      type="number"
+                      type="date"
                       className="form-control"
-                      name="chequeno"
+                      name="dateofpayment"
                       onChange={validation.handleChange}
                       onBlur={validation.handleBlur}
-                      value={validation.values.chequeno}
+                      value={validation.values.dateofpayment}
                     />
-                    {validation.touched.chequeno && validation.errors.chequeno ? (
-                      <span className="error">{validation.errors.chequeno}</span>
+                    {validation.touched.dateofpayment &&
+                    validation.errors.dateofpayment ? (
+                      <span className="error">
+                        {validation.errors.dateofpayment}
+                      </span>
                     ) : null}
                   </div>
                 </div>
-              }
 
-              <div className="mb-2 row">
-                <div className="col-md-3">
-                  <label className="form-label">Date of payment<span className="error-star">*</span></label>
-                </div>
-                <div className="col-md-5">
-                  <input
-                    type="date"
-                    className="form-control"
-                    name="dateofpayment"
-                    onChange={validation.handleChange}
-                    onBlur={validation.handleBlur}
-                    value={validation.values.dateofpayment}
-                  />
-                  {validation.touched.dateofpayment &&
-                    validation.errors.dateofpayment ? (
-                    <span className="error">
-                      {validation.errors.dateofpayment}
-                    </span>
-                  ) : null}
-                </div>
-              </div>
-
-              {validation.values.paymentMode?.value == 1 && <div className="mb-2 row">
-                <div className="col-md-3">
-                  <label className="form-label">Transaction ID<span className="error-star">*</span></label>
-                </div>
-                <div className="col-md-5">
-                  <input
-                    className="form-control"
-                    name="transactionid"
-                    onChange={validation.handleChange}
-                    onBlur={validation.handleBlur}
-                    value={validation.values.transactionid}
-                  />
-                  {validation.touched.transactionid &&
-                    validation.errors.transactionid ? (
-                    <span className="error">
-                      {validation.errors.transactionid}
-                    </span>
-                  ) : null}
-                </div>
-              </div>}
-              <div className="mb-2 row">
-                <div className="col-md-3">
-                  <label className="form-label">Transaction Proof<span className="error-star">*</span></label>
-                </div>
-                <div className="col-md-5">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    className="form-control"
-                    name="transactionproof"
-                    onChange={uploadFile}
-                  />
-                  {validation.touched.transactionproof &&
+                {validation.values.paymentMode?.value == 1 && (
+                  <div className="mb-2 row">
+                    <div className="col-md-3">
+                      <label className="form-label">
+                        Transaction ID<span className="error-star">*</span>
+                      </label>
+                    </div>
+                    <div className="col-md-5">
+                      <input
+                        className="form-control"
+                        name="transactionid"
+                        onChange={validation.handleChange}
+                        onBlur={validation.handleBlur}
+                        value={validation.values.transactionid}
+                      />
+                      {validation.touched.transactionid &&
+                      validation.errors.transactionid ? (
+                        <span className="error">
+                          {validation.errors.transactionid}
+                        </span>
+                      ) : null}
+                    </div>
+                  </div>
+                )}
+                <div className="mb-2 row">
+                  <div className="col-md-3">
+                    <label className="form-label">
+                      Transaction Proof<span className="error-star">*</span>
+                    </label>
+                  </div>
+                  <div className="col-md-5">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="form-control"
+                      name="transactionproof"
+                      onChange={uploadFile}
+                    />
+                    {validation.touched.transactionproof &&
                     validation.errors.transactionproof ? (
-                    <span className="error">
-                      {validation.errors.transactionproof}
-                    </span>
-                  ) : null}
+                      <span className="error">
+                        {validation.errors.transactionproof}
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
-              </div>
-              {isLoadingImage ? "Loading.." : ""}
+                {isLoadingImage ? "Loading.." : ""}
 
-              <div className="mb-2 mt-3  row">
-                <div className="col-lg-12 d-flex justify-content-between">
-                  <Link
-                    to="/confirm-group-tour"
-                    type="submit"
-                    className="btn btn-back"
-                  >
-                    Back
-                  </Link>
-                  <button type="submit" className="btn btn-submit btn-primary" disabled={isLoadingImage || isLoading}>
-                    {isLoading ? "Uploading..." : "Upload Payment"}
-                  </button>
+                <div className="mb-2 mt-3  row">
+                  <div className="col-lg-12 d-flex justify-content-between">
+                    <Link
+                      to="/confirm-group-tour"
+                      type="submit"
+                      className="btn btn-back"
+                    >
+                      Back
+                    </Link>
+                    <button
+                      type="submit"
+                      className="btn btn-submit btn-primary"
+                      disabled={isLoadingImage || isLoading}
+                    >
+                      {isLoading ? "Uploading..." : "Upload Payment"}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        }
-
+          )}
       </form>
     </>
   );

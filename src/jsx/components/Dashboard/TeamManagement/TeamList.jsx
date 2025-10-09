@@ -20,7 +20,7 @@ const TeamList = () => {
 		try {
 			setIsTableLoading(true);
 			const response = await get(
-				`sales-team-lead-listing?page=${page}&perPage=${perPageItem}`
+				`http://localhost:3000/api/sales-team-lead-listing?page=${page}&perPage=${perPageItem}`
 			);
 			setTeamsList(response?.data?.data);
 			setTotalPages(response?.data?.lastPage);

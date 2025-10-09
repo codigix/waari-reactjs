@@ -24,8 +24,8 @@ function App() {
 
 	const { pathname } = useLocation();
 
-  const dispatch = useDispatch();
-  const { token } = useSelector(state => state.auth)
+	const dispatch = useDispatch();
+	const { token } = useSelector(state => state.auth)
 
 	useEffect(() => {
 		if (!pathname.includes("feedback-form") && !pathname.includes("verify-otp")) {
@@ -36,19 +36,21 @@ function App() {
 	useEffect(() => {
 		const fetchPermissions = async () => {
 			try {
-				const response = await get(`/role/test-permission`);
-         console.log( "permissions",response.data.permissions)
+				const roleId = localStorage.getItem("roleId"); // stored earlier
+				console.log("roleId", roleId);
+				const response = await get(`/role/test-permission/${roleId}`);
+				console.log("permissions", response.data.permissions);
+
 				dispatch(setPermissions(response?.data?.permissions));
 			} catch (error) {
 				console.log(error);
 			}
 		};
-		
-    if (token) {
-      fetchPermissions();
-    }
-    
-	}, []);
+
+		if (token) {
+			fetchPermissions();
+		}
+	}, [token, dispatch]);
 
 	const routeblog = (
 		<Routes>

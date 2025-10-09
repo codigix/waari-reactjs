@@ -223,345 +223,385 @@ import AllSupplierPaymentsList from "./components/Dashboard/GitOperation/Supplie
 import AllOperationManagement from "./components/Dashboard/Enquiry-new/CustomOperationManagent/AllOperationManagement";
 
 const Markup = () => {
-    const allroutes = [
-        { url: "", component: <Home /> },
-        { url: "dashboard", component: <Home /> },
-        { url: "group-tour", component: <Grouptour /> },
-        { url: "customized-tour", component: <Customizedtour /> },
-        { url: "add-customized-tour", component: <Addcustomizedtour /> },
+  const allroutes = [
+    { url: "", component: <Home /> },
+    { url: "dashboard", component: <Home /> },
+    { url: "group-tour", component: <Grouptour /> },
+    { url: "customized-tour", component: <Customizedtour /> },
+    { url: "add-customized-tour", component: <Addcustomizedtour /> },
 
-        // may be this page is unused
-        { url: "add-group-tour", component: <Addgrouptourr /> },
-        {
-            url: "customized-tour-details/:id",
-            component: <Customizedtourdetails />,
-        },
+    // may be this page is unused
+    { url: "add-group-tour", component: <Addgrouptourr /> },
+    {
+      url: "customized-tour-details/:id",
+      component: <Customizedtourdetails />,
+    },
 
-        { url: "add-new-group-tour", component: <AddNewGroupTour /> },
-        { url: "edit-group-tour/:id", component: <EditGroupTour /> },
-        { url: "copy-group-tour/:id", component: <CopyGroupTour /> },
+    { url: "add-new-group-tour", component: <AddNewGroupTour /> },
+    { url: "edit-group-tour/:id", component: <EditGroupTour /> },
+    { url: "copy-group-tour/:id", component: <CopyGroupTour /> },
 
-        { url: "confirm-group-tour", component: <ConfirmGrouptour /> },
+    { url: "confirm-group-tour", component: <ConfirmGrouptour /> },
 
-        { url: "confirm-customized-tour", component: <ConfirmCustomizedtour /> },
-        { url: "confirm-grouptour", component: <ConfirmGrouptour /> },
+    { url: "confirm-customized-tour", component: <ConfirmCustomizedtour /> },
+    { url: "confirm-grouptour", component: <ConfirmGrouptour /> },
 
-        { url: "confirm-customizedtour", component: <ConfirmCustomizedtour /> },
+    { url: "confirm-customizedtour", component: <ConfirmCustomizedtour /> },
 
-        { url: "View-group-tour", component: <ViewGrouptour /> },
-        { url: "view-draft-grouptours-list", component: <DraftGroupTourList /> },
-        { url: "View-customized-tour", component: <ViewCustomizedtour /> },
-        
-        { url: "git-operation-tours-list", component: <GitOperationToursList /> },
-        { url: "git-operation-tabs/:id", component: <GitOperationTabs /> },
-        
-        { url: "lost-grouptour", component: <LostGrouptour /> },
-        { url: "lost-customizedtour", component: <LostCustomizedtour /> },
+    { url: "View-group-tour", component: <ViewGrouptour /> },
+    { url: "view-draft-grouptours-list", component: <DraftGroupTourList /> },
+    { url: "View-customized-tour", component: <ViewCustomizedtour /> },
 
-        { url: "booking-record-grouptour", component: <Bookingrecord /> },
-        {
-            url: "booking-record-customizetour",
-            component: <BookingRecordCustomizeTours />,
-        },
-        { url: "all-billing/:id", component: <Allbilling /> },
+    { url: "git-operation-tours-list", component: <GitOperationToursList /> },
+    { url: "git-operation-tabs/:id", component: <GitOperationTabs /> },
 
-        { url: "payment-group-tour/:id", component: <PaymentGrouptour /> },
-        {
-            url: "payment-customized-tour/:id/:idPayment",
-            component: <PaymentCustomizedtour />,
-        },
+    { url: "lost-grouptour", component: <LostGrouptour /> },
+    { url: "lost-customizedtour", component: <LostCustomizedtour /> },
 
-        {
-            url: "all-billing-ct/:id/:idPayment",
-            component: <AllBillingCustomizeTour />,
-        },
-        { url: "booking/:id", component: <Booking /> },
-        { url: "/customizedbooking/booking/:id", component: <Customizedbooking /> },
-        { url: "group-tour-new", component: <NewGrouptour /> },
-        { url: "customized-tour-new", component: <NewCustomizedtour /> },
-        { url: "operator-custom-tours", component: <OperatorCustomTours /> },
-        { url: "all-operator-custom-tours", component: <AllOperatorCustomTours /> },
-        { url: "add-customized-tour-new", component: <AddcustomizedtourNew /> },
+    { url: "booking-record-grouptour", component: <Bookingrecord /> },
+    {
+      url: "booking-record-customizetour",
+      component: <BookingRecordCustomizeTours />,
+    },
+    { url: "all-billing/:id", component: <Allbilling /> },
 
-        { url: "add-enquiry-git", component: <AddEnquiryGit /> },
-        { url: "Enquiry-Details-git", component: <Enquirydetailsgit /> },
-        { url: "enquiry/:id", component: <Enquiry /> },
-        { url: "enquiry-ct/:id", component: <Enquiryct /> },
-        { url: "operation-management/:id", component: <OperationManagement /> },
-        { url: "all-operation-management/:id", component: <AllOperationManagement /> },
-        // Old Routes and I think Unused code also but not sure
-        { url: "add-guest", component: <Addguest /> },
-        // { url: "edit-guest/:id", component: <Editguest /> },
+    { url: "payment-group-tour/:id", component: <PaymentGrouptour /> },
+    {
+      url: "payment-customized-tour/:id/:idPayment",
+      component: <PaymentCustomizedtour />,
+    },
 
-        // New Route for Guest CRUD
-        { url: "guest-list", component: <Guestlist /> },
-        { url: "add-new-guest", component: <AddGuestNewForm /> },
-        { url: "edit-guest-new/:id", component: <EditGuestNewForm /> },
-        { url: "view-guest/:id", component: <Viewguest /> },
+    {
+      url: "all-billing-ct/:id/:idPayment",
+      component: <AllBillingCustomizeTour />,
+    },
+    { url: "booking/:id", component: <Booking /> },
+    { url: "/customizedbooking/booking/:id", component: <Customizedbooking /> },
+    { url: "group-tour-new", component: <NewGrouptour /> },
+    { url: "customized-tour-new", component: <NewCustomizedtour /> },
+    { url: "operator-custom-tours", component: <OperatorCustomTours /> },
+    { url: "all-operator-custom-tours", component: <AllOperatorCustomTours /> },
+    { url: "add-customized-tour-new", component: <AddcustomizedtourNew /> },
 
-        { url: "all-guest-list", component: <AllGuestList /> },
-        { url: "all-guests-search", component: <AllGuestsSearch /> },
-        { url: "all-add-new-guest", component: <AllAddGuestNewForm /> },
-        { url: "all-edit-guest-new/:id", component: <AllEditGuestNewForm /> },
-        { url: "all-view-guest/:id", component: <AllViewguest /> },
+    { url: "add-enquiry-git", component: <AddEnquiryGit /> },
+    { url: "Enquiry-Details-git", component: <Enquirydetailsgit /> },
+    { url: "enquiry/:id", component: <Enquiry /> },
+    { url: "enquiry-ct/:id", component: <Enquiryct /> },
+    { url: "operation-management/:id", component: <OperationManagement /> },
+    {
+      url: "all-operation-management/:id",
+      component: <AllOperationManagement />,
+    },
+    // Old Routes and I think Unused code also but not sure
+    { url: "add-guest", component: <Addguest /> },
+    // { url: "edit-guest/:id", component: <Editguest /> },
 
-        { url: "view-tour-details/:id", component: <Viewtourdetails /> },
-        { url: "view-billing", component: <Billinglist /> },
-        { url: "view-billing-details", component: <Billingdetails /> },
-        { url: "guest-details/:id", component: <Guestdetails /> },
-        { url: "payment-details/:id", component: <Paymentdetails /> },
-        { url: "discount-details/:id", component: <Discountdetails /> },
-        { url: "loyalty", component: <Loyalty /> },
-        { url: "all-loyalty", component: <AllLoyalty /> },
-        { url: "issuse-card", component: <Issusecard /> },
-        { url: "view-loyalty/:id", component: <Viewguest /> },
-        { url: "chart", component: <Chart /> },
-        { url: "invoice/:id", component: <Invoice /> },
-        { url: "invoice-ct/:id/:idPayment", component: <InvoiceCustomizeTour /> },
-        { url: "receipt/:id/:idPayment", component: <Receipt /> },
-        { url: "receipt-ct/:id/:idPayment", component: <ReceiptCt /> },
-        { url: "edit-ct/:id", component: <EditCustomizeTour /> },
-        { url: "view-vouchers/:id", component: <ViewVouchers /> },
-        {
-            url: "view-customized-tour-details/:id",
-            component: <ViewCustomizedTourDetails />,
-        },
+    // New Route for Guest CRUD
+    { url: "guest-list", component: <Guestlist /> },
+    { url: "add-new-guest", component: <AddGuestNewForm /> },
+    { url: "edit-guest-new/:id", component: <EditGuestNewForm /> },
+    { url: "view-guest/:id", component: <Viewguest /> },
 
-        // Reports
-        { url: "view-commision-reports/", component: <CommisionReport /> },
-        {
-            url: "customized-monthwise-profit",
-            component: <CustomizedMonthWiseProfit />,
-        },
-        { url: "loyalty-program-report", component: <LoyaltyProgramReport /> },
+    { url: "all-guest-list", component: <AllGuestList /> },
+    { url: "all-guests-search", component: <AllGuestsSearch /> },
+    { url: "all-add-new-guest", component: <AllAddGuestNewForm /> },
+    { url: "all-edit-guest-new/:id", component: <AllEditGuestNewForm /> },
+    { url: "all-view-guest/:id", component: <AllViewguest /> },
 
-        { url: "profile/", component: <Profile /> },
+    { url: "view-tour-details/:id", component: <Viewtourdetails /> },
+    { url: "view-billing", component: <Billinglist /> },
+    { url: "view-billing-details", component: <Billingdetails /> },
+    { url: "guest-details/:id", component: <Guestdetails /> },
+    { url: "payment-details/:id", component: <Paymentdetails /> },
+    { url: "discount-details/:id", component: <Discountdetails /> },
+    { url: "loyalty", component: <Loyalty /> },
+    { url: "all-loyalty", component: <AllLoyalty /> },
+    { url: "issuse-card", component: <Issusecard /> },
+    { url: "view-loyalty/:id", component: <Viewguest /> },
+    { url: "chart", component: <Chart /> },
+    { url: "invoice/:id", component: <Invoice /> },
+    { url: "invoice-ct/:id/:idPayment", component: <InvoiceCustomizeTour /> },
+    { url: "receipt/:id/:idPayment", component: <Receipt /> },
+    { url: "receipt-ct/:id/:idPayment", component: <ReceiptCt /> },
+    { url: "edit-ct/:id", component: <EditCustomizeTour /> },
+    { url: "view-vouchers/:id", component: <ViewVouchers /> },
+    {
+      url: "view-customized-tour-details/:id",
+      component: <ViewCustomizedTourDetails />,
+    },
 
-        // Affiliates and Influencers Routes
-        { url: "affiliator-influencers", component: <AffiliatorInfluencersList /> },
-        { url: "add-affiliator", component: <AddAffiliator /> },
-        { url: "edit-affiliator/:id", component: <EditAffiliator /> },
-        { url: "view-affiliator/:id", component: <ViewAffiliator /> },
+    // Reports
+    { url: "view-commision-reports/", component: <CommisionReport /> },
+    {
+      url: "customized-monthwise-profit",
+      component: <CustomizedMonthWiseProfit />,
+    },
+    { url: "loyalty-program-report", component: <LoyaltyProgramReport /> },
 
-        // {url:"coupon", component:<Coupon/>},
-        { url: "add-user", component: <Adduser /> },
-        { url: "edit-user/:id", component: <Edituser /> },
-        { url: "view-user/:id", component: <Viewuser /> },
-        { url: "users-list", component: <UserList /> },
+    { url: "profile/", component: <Profile /> },
 
-        // roles and permissions
-        { url: "role-list", component: <RolesList /> },
-        { url: "add-roles", component: <AddRoles /> },
-        { url: "edit-roles/:id", component: <EditRoles /> },
-        { url: "add-roles", component: <AddRoles /> },
-        { url: "/access-denied", component: <AccessDenied /> },
+    // Affiliates and Influencers Routes
+    { url: "affiliator-influencers", component: <AffiliatorInfluencersList /> },
+    { url: "add-affiliator", component: <AddAffiliator /> },
+    { url: "edit-affiliator/:id", component: <EditAffiliator /> },
+    { url: "view-affiliator/:id", component: <ViewAffiliator /> },
 
-        { url: "globe-information", component: <Packages /> },
-        { url: "sales-target", component: <Salestarget /> },
-        { url: "/set-sales-target/:id", component: <SetSalestarget /> },
+    // {url:"coupon", component:<Coupon/>},
+    { url: "add-user", component: <Adduser /> },
+    { url: "edit-user/:userId", component: <Edituser /> },
+    { url: "view-user/:userId", component: <Viewuser /> },
+    { url: "users-list", component: <UserList /> },
 
-        // Coupons
-        { url: "coupon-list", component: <CouponList /> },
-        { url: "add-coupon", component: <AddCoupon /> },
-        { url: "edit-coupon/:id", component: <EditCoupon /> },
-        { url: "view-coupon/:id", component: <ViewCoupon /> },
+    // roles and permissions
+    { url: "role-list", component: <RolesList /> },
+    { url: "add-roles", component: <AddRoles /> },
+    { url: "edit-roles/:id", component: <EditRoles /> },
+    { url: "add-roles", component: <AddRoles /> },
+    { url: "/access-denied", component: <AccessDenied /> },
 
-        { url: "billing-group-tour", component: <BillingGrouptour /> },
-        { url: "billing-customized-tour", component: <BillingCustomizedtour /> },
-        {
-            url: "/details/group-tour/:id/:idPayment/:familyHeadGtId",
-            component: <BillingDetailgrouptour />,
-        },
-        {
-            url: "/details/customized-tour/:id/:idPayment",
-            component: <BillingDetailcustomizedtour />,
-        },
+    { url: "globe-information", component: <Packages /> },
+    { url: "sales-target", component: <Salestarget /> },
+    { url: "/set-sales-target/:id", component: <SetSalestarget /> },
 
-        // New Routes for Confimed Enquiry in Tabbed Layout
-        { url: "confirm-group-tour-new", component: <NewConfirmGrouptour /> },
-        {
-            url: "confirm-enquiry/:enquiryId/:familyHeadGtId",
-            component: <NewConfirmGrouptourTabs />,
-        },
+    // Coupons
+    { url: "coupon-list", component: <CouponList /> },
+    { url: "add-coupon", component: <AddCoupon /> },
+    { url: "edit-coupon/:id", component: <EditCoupon /> },
+    { url: "view-coupon/:id", component: <ViewCoupon /> },
 
-        { url: "confirm-custom-tour-new", component: <NewConfirmCustomtour /> },
-        {
-            url: "confirm-custom-enquiry/:id/",
-            component: <NewConfirmCustomtourTabs />,
-        },
+    { url: "billing-group-tour", component: <BillingGrouptour /> },
+    { url: "billing-customized-tour", component: <BillingCustomizedtour /> },
+    {
+      url: "/details/group-tour/:id/:idPayment/:familyHeadGtId",
+      component: <BillingDetailgrouptour />,
+    },
+    {
+      url: "/details/customized-tour/:id/:idPayment",
+      component: <BillingDetailcustomizedtour />,
+    },
 
-        // New Routes for Booked Enquiry in Tabbed Layout
-        { url: "booking-group-tour-new", component: <NewBookingGrouptour /> },
-        {
-            url: "booking-enquiry/:enquiryId/:familyHeadGtId",
-            component: <NewBookingGrouptourTabs />,
-        },
+    // New Routes for Confimed Enquiry in Tabbed Layout
+    { url: "confirm-group-tour-new", component: <NewConfirmGrouptour /> },
+    {
+      url: "confirm-enquiry/:enquiryId/:familyHeadGtId",
+      component: <NewConfirmGrouptourTabs />,
+    },
 
-        { url: "booking-custom-tour-new", component: <NewBookingCustomtour /> },
-        {
-            url: "booking-custom-enquiry/:id/",
-            component: <NewBookingCustomtourTabs />,
-        },
+    { url: "confirm-custom-tour-new", component: <NewConfirmCustomtour /> },
+    {
+      url: "confirm-custom-enquiry/:id/",
+      component: <NewConfirmCustomtourTabs />,
+    },
 
-        // for all
-        {
-            url: "all-booking-group-tour-new",
-            component: <AllNewBookingGrouptour />,
-        },
-        {
-            url: "all-booking-enquiry/:enquiryId/:familyHeadGtId",
-            component: <AllNewBookingGrouptourTabs />,
-        },
+    // New Routes for Booked Enquiry in Tabbed Layout
+    { url: "booking-group-tour-new", component: <NewBookingGrouptour /> },
+    {
+      url: "booking-enquiry/:enquiryId/:familyHeadGtId",
+      component: <NewBookingGrouptourTabs />,
+    },
 
-        {
-            url: "all-booking-custom-tour-new",
-            component: <AllNewBookingCustomtour />,
-        },
-        {
-            url: "all-booking-custom-enquiry/:id/",
-            component: <AllNewBookingCustomtourTabs />,
-        },
+    { url: "booking-custom-tour-new", component: <NewBookingCustomtour /> },
+    {
+      url: "booking-custom-enquiry/:id/",
+      component: <NewBookingCustomtourTabs />,
+    },
 
-        // Future Tour Enquiry Routes
-        { url: "all-future-tour-enquiries", component: <AllFutureEnquiries /> },
-        { url: "my-future-tour-enquiries", component: <MyFutureEnquiries /> },
-        { url: "add-future-tour-enquiries", component: <AddFutureEnquiries /> },
-        // { url: "feedback-form", component: <Feedbackform /> },
-        { url: "feedback-list", component: <Feedbacklist /> },
-        { url: "monthwise-profit", component: <Monthwiseprofit /> },
-        { url: "grouptour-profit", component: <Grouptourprofit /> },
-        { url: "customized-guest-travel", component: <Customizedguesttravel /> },
-        { url: "group-guest-travel", component: <Groupguesttravel /> },
-        { url: "group-travel-cities", component: <Grouptravelcities /> },
-        { url: "customized-travel-cities", component: <Customizedtravelcities /> },
-        { url: "coupon-report", component: <Couponreport /> },
-        { url: "waari-select", component: <Waariselect /> },
-        { url: "market", component: <Marketreport /> },
-        // <Route path="/Feedbackform" element={<Feedbackform />} />
+    // for all
+    {
+      url: "all-booking-group-tour-new",
+      component: <AllNewBookingGrouptour />,
+    },
+    {
+      url: "all-booking-enquiry/:enquiryId/:familyHeadGtId",
+      component: <AllNewBookingGrouptourTabs />,
+    },
 
-        // all ongoing group tour
+    {
+      url: "all-booking-custom-tour-new",
+      component: <AllNewBookingCustomtour />,
+    },
+    {
+      url: "all-booking-custom-enquiry/:id/",
+      component: <AllNewBookingCustomtourTabs />,
+    },
 
-        { url: "all-group-tour-new", component: <AllNewGrouptour /> },
-        { url: "all-customized-tour-new", component: <AllNewCustomizedtour /> },
+    // Future Tour Enquiry Routes
+    { url: "all-future-tour-enquiries", component: <AllFutureEnquiries /> },
+    { url: "my-future-tour-enquiries", component: <MyFutureEnquiries /> },
+    { url: "add-future-tour-enquiries", component: <AddFutureEnquiries /> },
+    // { url: "feedback-form", component: <Feedbackform /> },
+    { url: "feedback-list", component: <Feedbacklist /> },
+    { url: "monthwise-profit", component: <Monthwiseprofit /> },
+    { url: "grouptour-profit", component: <Grouptourprofit /> },
+    { url: "customized-guest-travel", component: <Customizedguesttravel /> },
+    { url: "group-guest-travel", component: <Groupguesttravel /> },
+    { url: "group-travel-cities", component: <Grouptravelcities /> },
+    { url: "customized-travel-cities", component: <Customizedtravelcities /> },
+    { url: "coupon-report", component: <Couponreport /> },
+    { url: "waari-select", component: <Waariselect /> },
+    { url: "market", component: <Marketreport /> },
+    // <Route path="/Feedbackform" element={<Feedbackform />} />
 
-        { url: "all-enquiry/:id", component: <AllEnquiry /> },
-        { url: "all-enquiry-ct/:id", component: <AllEnquiryct /> },
+    // all ongoing group tour
 
-        // presale and assign enquiry routes
-        { url: "presale-group-tour-new", component: <PresaleGroupTour /> },
-		{ url: "/assign-gt-enquiry/:id", component: <AssignEnquiryGT /> },
-		{ url: "presale-customized-tour-new", component: <PresaleCustomizedtour /> },
-		{ url: "/assign-ct-enquiry/:id", component: <AssigncustomizedtourNew /> },
+    { url: "all-group-tour-new", component: <AllNewGrouptour /> },
+    { url: "all-customized-tour-new", component: <AllNewCustomizedtour /> },
 
-        // all confirmed
-        {
-            url: "all-confirm-group-tour-new",
-            component: <AllNewConfirmGrouptour />,
-        },
-        {
-            url: "all-confirm-enquiry/:enquiryId/:familyHeadGtId",
-            component: <AllNewConfirmGrouptourTabs />,
-        },
+    { url: "all-enquiry/:id", component: <AllEnquiry /> },
+    { url: "all-enquiry-ct/:id", component: <AllEnquiryct /> },
 
-        {
-            url: "all-confirm-custom-tour-new",
-            component: <AllNewConfirmCustomtour />,
-        },
-        {
-            url: "all-confirm-custom-enquiry/:id/",
-            component: <AllNewConfirmCustomtourTabs />,
-        },
+    // presale and assign enquiry routes
+    { url: "presale-group-tour-new", component: <PresaleGroupTour /> },
+    { url: "/assign-gt-enquiry/:id", component: <AssignEnquiryGT /> },
+    {
+      url: "presale-customized-tour-new",
+      component: <PresaleCustomizedtour />,
+    },
+    { url: "/assign-ct-enquiry/:id", component: <AssigncustomizedtourNew /> },
 
-        // All Lost Enquries
-        { url: "all-lost-grouptour", component: <AllLostGrouptour /> },
-        { url: "all-lost-customizedtour", component: <AllLostCustomizedtour /> },
+    // all confirmed
+    {
+      url: "all-confirm-group-tour-new",
+      component: <AllNewConfirmGrouptour />,
+    },
+    {
+      url: "all-confirm-enquiry/:enquiryId/:familyHeadGtId",
+      component: <AllNewConfirmGrouptourTabs />,
+    },
 
-        // Teams
-        { url: "teams-list", component: <TeamList /> },
-        { url: "add-team", component: <AddTeam /> },
-        { url: "edit-team/:id", component: <EditTeam /> },
+    {
+      url: "all-confirm-custom-tour-new",
+      component: <AllNewConfirmCustomtour />,
+    },
+    {
+      url: "all-confirm-custom-enquiry/:id/",
+      component: <AllNewConfirmCustomtourTabs />,
+    },
 
-        { url: "under-team-lead-sales-list", component: <UnderTeamLeadSalesList /> },
-        { url: "under-team-lead-sales-data/:id", component: <UnderTeamLeadSalesData /> },
-        { url: "/seatavailable", component: <Seatavailable /> },
+    // All Lost Enquries
+    { url: "all-lost-grouptour", component: <AllLostGrouptour /> },
+    { url: "all-lost-customizedtour", component: <AllLostCustomizedtour /> },
 
-        { url: "add-review", component: <AddReview /> },
-        { url: "edit-review/:id", component: <EditReview /> },
-        { url: "view-review/:id", component: <ViewReview /> },
-        { url: "reviews-list", component: <ReviewsList /> },
+    // Teams
+    { url: "teams-list", component: <TeamList /> },
+    { url: "add-team", component: <AddTeam /> },
+    { url: "edit-team/:id", component: <EditTeam /> },
 
-        { url: "home-five-sections-list", component: <HomeFiveSectionsList /> },
-        { url: "edit-top-five/:id", component: <EditTopFive /> },
-        { url: "tour-type-list", component: <TourTypeList /> },
-        { url: "add-tour-type", component: <AddTourType /> },
-        { url: "edit-tour-type/:id", component: <EditTourType /> },
+    {
+      url: "under-team-lead-sales-list",
+      component: <UnderTeamLeadSalesList />,
+    },
+    {
+      url: "under-team-lead-sales-data/:id",
+      component: <UnderTeamLeadSalesData />,
+    },
+    { url: "/seatavailable", component: <Seatavailable /> },
 
-        { url: "sales-offices-list", component: <SalesOfficeList /> },
-        { url: "add-sales-office", component: <AddSalesOffice /> },
-        { url: "edit-sales-office/:id", component: <EditSalesOffice /> },
-        
-        { url: "tailormade-tours", component: <TailorMadeToursList /> },
-        { url: "add-new-tailor-made", component: <AddNewTailorMadeJourney /> },
-        { url: "edit-tailormade-tour/:id", component: <EditTailorMadeJourney /> },
-        { url: "view-tailormade-tour-details/:id", component: <ViewTailorMadeTourDetails /> },
-        // { url: "copy-group-tour/:id", component: <CopyGroupTour /> },
+    { url: "add-review", component: <AddReview /> },
+    { url: "edit-review/:id", component: <EditReview /> },
+    { url: "view-review/:id", component: <ViewReview /> },
+    { url: "reviews-list", component: <ReviewsList /> },
 
-        { url: "group-tour-draft/:id", component: <GroupTourDraftForm /> },
-        { url: "search-group-tour-guests", component: <SearchGuestsGT /> },
-        { url: "search-custom-tour-guests", component: <SearchGuestsCT /> },
-        { url: "search-group-tour-all-guests", component: <SearchAllGuestsGT /> },
-        { url: "search-custom-tour-all-guests", component: <SearchAllGuestsCT /> },
+    { url: "home-five-sections-list", component: <HomeFiveSectionsList /> },
+    { url: "edit-top-five/:id", component: <EditTopFive /> },
+    { url: "tour-type-list", component: <TourTypeList /> },
+    { url: "add-tour-type", component: <AddTourType /> },
+    { url: "edit-tour-type/:id", component: <EditTourType /> },
 
-        { url: "group-tour-guests-details/:enquiryId/:familyHeadGtId", component: <GroupTourGuestsdetails /> },
-        { url: "group-tour-all-guests-details/:enquiryId/:familyHeadGtId", component: <GroupTourAllGuestsdetails /> },
+    { url: "sales-offices-list", component: <SalesOfficeList /> },
+    { url: "add-sales-office", component: <AddSalesOffice /> },
+    { url: "edit-sales-office/:id", component: <EditSalesOffice /> },
 
-        { url: "custom-tour-guests-details/:enquiryId/:familyHeadGtId", component: <CustomTourGuestsdetails /> },
-        { url: "custom-tour-all-guests-details/:enquiryId/:familyHeadGtId", component: <CustomTourAllGuestsdetails /> },
-        { url: "website-enquiries", component: <WebisteEnquiries /> },
-        { url: "website-homepage-tours-manage", component: <WebsiteHomePageTours /> },
+    { url: "tailormade-tours", component: <TailorMadeToursList /> },
+    { url: "add-new-tailor-made", component: <AddNewTailorMadeJourney /> },
+    { url: "edit-tailormade-tour/:id", component: <EditTailorMadeJourney /> },
+    {
+      url: "view-tailormade-tour-details/:id",
+      component: <ViewTailorMadeTourDetails />,
+    },
+    // { url: "copy-group-tour/:id", component: <CopyGroupTour /> },
 
-        { url: "forgot-password", component: <ForgotPassword /> },
-        { url: "/verify-forget-password-otp", component: <VerifyForgetPasswordOTP /> },
+    { url: "group-tour-draft/:id", component: <GroupTourDraftForm /> },
+    { url: "search-group-tour-guests", component: <SearchGuestsGT /> },
+    { url: "search-custom-tour-guests", component: <SearchGuestsCT /> },
+    { url: "search-group-tour-all-guests", component: <SearchAllGuestsGT /> },
+    { url: "search-custom-tour-all-guests", component: <SearchAllGuestsCT /> },
 
-    ];
+    {
+      url: "group-tour-guests-details/:enquiryId/:familyHeadGtId",
+      component: <GroupTourGuestsdetails />,
+    },
+    {
+      url: "group-tour-all-guests-details/:enquiryId/:familyHeadGtId",
+      component: <GroupTourAllGuestsdetails />,
+    },
 
-    let path = window.location.pathname;
-    path = path.split("/");
-    path = path[path.length - 1];
+    {
+      url: "custom-tour-guests-details/:enquiryId/:familyHeadGtId",
+      component: <CustomTourGuestsdetails />,
+    },
+    {
+      url: "custom-tour-all-guests-details/:enquiryId/:familyHeadGtId",
+      component: <CustomTourAllGuestsdetails />,
+    },
+    { url: "website-enquiries", component: <WebisteEnquiries /> },
+    {
+      url: "website-homepage-tours-manage",
+      component: <WebsiteHomePageTours />,
+    },
 
-    let pagePath = path.split("-").includes("page");
-    return (
-        <>
-            <Routes>
-                <Route element={<MainLayout />}>
-                    {allroutes.map((data, i) => (
-                        <Route key={i} exact path={`${data.url}`} element={data.component} />
-                    ))}
-                </Route>
-            </Routes>
-            <Setting />
-            <ScrollToTop />
-        </>
-    );
+    { url: "forgot-password", component: <ForgotPassword /> },
+    {
+      url: "/verify-forget-password-otp",
+      component: <VerifyForgetPasswordOTP />,
+    },
+  ];
+
+  let path = window.location.pathname;
+  path = path.split("/");
+  path = path[path.length - 1];
+
+  let pagePath = path.split("-").includes("page");
+  return (
+    <>
+      <Routes>
+        <Route element={<MainLayout />}>
+          {allroutes.map((data, i) => (
+            <Route
+              key={i}
+              exact
+              path={`${data.url}`}
+              element={data.component}
+            />
+          ))}
+        </Route>
+      </Routes>
+      <Setting />
+      <ScrollToTop />
+    </>
+  );
 };
 
 function MainLayout() {
-    const { menuToggle, sidebariconHover } = useContext(ThemeContext);
-    return (
-        <div
-            id="main-wrapper"
-            className={`show ${sidebariconHover ? "iconhover-toggle" : ""} ${
-                menuToggle ? "menu-toggle" : ""
-            }`}
-        >
-            <Nav />
-            <div className="content-body" style={{ minHeight: window.screen.height - 45 }}>
-                <div className="container-fluid">
-                    <Outlet />
-                </div>
-            </div>
-            <Footer />
+  const { menuToggle, sidebariconHover } = useContext(ThemeContext);
+  return (
+    <div
+      id="main-wrapper"
+      className={`show ${sidebariconHover ? "iconhover-toggle" : ""} ${
+        menuToggle ? "menu-toggle" : ""
+      }`}
+    >
+      <Nav />
+      <div
+        className="content-body"
+        style={{ minHeight: window.screen.height - 45 }}
+      >
+        <div className="container-fluid">
+          <Outlet />
         </div>
-    );
+      </div>
+      <Footer />
+    </div>
+  );
 }
 export default Markup;

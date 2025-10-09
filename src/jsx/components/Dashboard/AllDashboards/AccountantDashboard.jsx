@@ -17,7 +17,7 @@ const Home = () => {
 
   const getTotalBilling = async () => {
     try {
-      const response = await get("total-billing");
+      const response = await get("/billing/total-billing");
       setTotalBillings(response.data?.totalBilling);
     } catch (error) {
       console.log(error);
@@ -26,7 +26,7 @@ const Home = () => {
 
   const getTotalBillingApproved = async () => {
     try {
-      const response = await get("total-bill-approved");
+      const response = await get("/billing/total-bill-approved");
       setTotalBillingsApproved(response.data?.totalBillApproved);
     } catch (error) {
       console.log(error);
@@ -35,7 +35,7 @@ const Home = () => {
 
   const getTotalBillingPending = async () => {
     try {
-      const response = await get("total-bill-pending");
+      const response = await get("/billing/total-bill-pending");
       setTotalBillingsPending(response.data?.totalBillPending);
     } catch (error) {
       console.log(error);

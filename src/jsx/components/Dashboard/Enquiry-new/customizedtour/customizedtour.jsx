@@ -288,7 +288,7 @@ const Customizedtour = () => {
 		try {
 			setIsLoading1(true);
 			const response = await get(
-				`/enquiry-follow-custom?perPage=${perPageItem}&page=${page}`
+				`/billing/enquiry-follow-custom?perPage=${perPageItem}&page=${page}`
 			);
 			setIsLoading1(false);
 			setData(response?.data?.data);

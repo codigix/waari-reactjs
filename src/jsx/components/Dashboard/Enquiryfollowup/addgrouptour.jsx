@@ -13,7 +13,6 @@ import ErrorMessageComponent from "../FormErrorComponent/ErrorMessageComponent";
 import BackButton from "../../common/BackButton";
 
 const Addgrouptourr = () => {
-
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -57,9 +56,8 @@ const Addgrouptourr = () => {
     getPrioritt();
   }, []);
 
-
   const [enquiryref, setEnquiryRef] = useState([]);
-  
+
   const getEnquiryRef = async () => {
     try {
       const response = await get(`/enquiry-reference-list`);
@@ -76,7 +74,6 @@ const Addgrouptourr = () => {
   useEffect(() => {
     getEnquiryRef();
   }, []);
-
 
   const [guestenquiryref, setGuestEnquiryRef] = useState([]);
 
@@ -96,7 +93,6 @@ const Addgrouptourr = () => {
   useEffect(() => {
     getGuestEnquiryRef();
   }, []);
-
 
   const validation = useFormik({
     // enableReinitialize : use this flag when initial values needs to be changed
@@ -120,21 +116,19 @@ const Addgrouptourr = () => {
       guestenquiryref: Yup.string().when("enquiryref", {
         is: (enquiryref) => enquiryref == 9,
         then: Yup.string().required("Enter the Guest Enquiry Reference"),
-        otherwise: Yup.string()
+        otherwise: Yup.string(),
       }),
       enquiryref: Yup.string().required("Enter the Enquiry Reference"),
       adults: Yup.string().required("Enter The Adults"),
-      email: Yup.string()
-        .email("Please enter valid email address"),
+      email: Yup.string().email("Please enter valid email address"),
       tourname: Yup.string().required("Enter Tour name"),
       contact: Yup.string()
         .required("Enter the Contact Number")
         .min(10, "Please enter correct contact number")
         .max(10, "Please enter correct contact number"),
       nameofguest: Yup.string()
-      .required("Enter the Name of Guest")
-      .min(4, "Name should be atleast 4 characters.")
-      ,
+        .required("Enter the Name of Guest")
+        .min(4, "Name should be atleast 4 characters."),
     }),
 
     onSubmit: async (values) => {
@@ -149,13 +143,23 @@ const Addgrouptourr = () => {
         enquiryReferId: values.enquiryref,
         priorityId: values.priority,
         groupTourId: values.tourname,
-        guestRefId: values.guestenquiryref
+        guestRefId: values.guestenquiryref,
       };
-      if ((Number(values.adults) + Number(values.childs)) <= 6) {
+
+      console.log("data", data);
+      if (Number(values.adults) + Number(values.childs) <= 6) {
         try {
           setIsLoading(true);
-          const response = await post(`/enquiry-group-tour`, data);
+
+          const response = await post(`/enquiry-group-tour`, data, {
+            headers: {
+              token: 25, // this token must have permission 25
+            },
+          });
+          console.log("Response:", response);
+
           setIsLoading(false);
+
           toast.success(response?.data?.message);
           navigate("/group-tour");
         } catch (error) {
@@ -164,9 +168,8 @@ const Addgrouptourr = () => {
           console.log(error);
         }
       } else {
-        toast.error("Pax size cannot be more then 6 people")
+        toast.error("Pax size cannot be more then 6 people");
       }
-
     },
   });
 
@@ -182,8 +185,8 @@ const Addgrouptourr = () => {
 
   //get data from name
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const [guestId, setGuestId] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [guestId, setGuestId] = useState("");
   const [nameOptions, setNameOptions] = useState([]);
 
   // Simulating async data fetching (replace with actual API call)
@@ -192,20 +195,19 @@ const Addgrouptourr = () => {
       const response = await get(`guest-email?guestName=${searchTerm}`);
       if (response.data.data.length > 0) {
         setNameOptions(response.data.data);
-        validation.setFieldValue('nameofguest', searchTerm);
+        validation.setFieldValue("nameofguest", searchTerm);
       } else {
-        setNameOptions([])
-        validation.setFieldValue('nameofguest', searchTerm);
-        setGuestId('')
-        validation.setFieldValue('contact', '')
-        validation.setFieldValue('email', '')
-        validation.setFieldValue('enquiryref', '')
+        setNameOptions([]);
+        validation.setFieldValue("nameofguest", searchTerm);
+        setGuestId("");
+        validation.setFieldValue("contact", "");
+        validation.setFieldValue("email", "");
+        validation.setFieldValue("enquiryref", "");
       }
     } catch (error) {
       console.log(error);
     }
   };
-
 
   useEffect(() => {
     if (searchTerm.length > 2) {
@@ -215,69 +217,68 @@ const Addgrouptourr = () => {
       // Reset options when search term is less than or equal to 3 characters
       setNameOptions([]);
     }
-
   }, [searchTerm]);
 
   const handleNameChange = (selectedOption) => {
     if (selectedOption) {
-      validation.setFieldValue('nameofguest', selectedOption.label);
-      setGuestId(selectedOption.value)
-      getGuestInfoByName(selectedOption.value)
+      validation.setFieldValue("nameofguest", selectedOption.label);
+      setGuestId(selectedOption.value);
+      getGuestInfoByName(selectedOption.value);
     } else {
-      validation.setFieldValue('email', '');
-      validation.setFieldValue('nameofguest', '')
-      validation.setFieldValue('contact', '')
-      validation.setFieldValue('enquiryref', '')
+      validation.setFieldValue("email", "");
+      validation.setFieldValue("nameofguest", "");
+      validation.setFieldValue("contact", "");
+      validation.setFieldValue("enquiryref", "");
     }
   };
 
   //get guest info by name
   const getGuestInfoByName = async (name) => {
     try {
-      const result = await get(`guest-info?guestId=${name}`)
-      const { phone, email } = result.data
+      const result = await get(`guest-info?guestId=${name}`);
+      const { phone, email } = result.data;
       if (result.data) {
-        validation.setFieldValue('email', email)
-        validation.setFieldValue('contact', phone)
-        validation.setFieldValue('enquiryref', 8)
+        validation.setFieldValue("email", email);
+        validation.setFieldValue("contact", phone);
+        validation.setFieldValue("enquiryref", 8);
       }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   // to get available seats left for trip starts
 
   const getAvailableSeates = (tourId) => {
     try {
-      console.log(tourId)
+      console.log(tourId);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   // to get available seats left for trip end
 
   useEffect(() => {
-    let element = document.getElementById("group-tour")
+    let element = document.getElementById("group-tour");
     if (element) {
-      element.classList.add("mm-active1") // Add the 'active' class to the element
+      element.classList.add("mm-active1"); // Add the 'active' class to the element
     }
     return () => {
       if (element) {
-        element.classList.remove("mm-active1") // remove the 'active' class to the element when change to another page
+        element.classList.remove("mm-active1"); // remove the 'active' class to the element when change to another page
       }
-    }
-  }, [])
+    };
+  }, []);
   return (
     <>
       <div className="row">
-        <div className="col-lg-12" style={{ paddingTop: '40px' }}>
+        <div className="col-lg-12" style={{ paddingTop: "40px" }}>
           <div className="card">
             <div className="row page-titles mx-0 fixed-top-breadcrumb">
-                 <ol className="breadcrumb">
-                        <li className="breadcrumb-item">
-                            <BackButton />
-                        </li>
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <BackButton />
+                </li>
                 <li className="breadcrumb-item active">
                   <Link to="/dashboard">Dashboard</Link>
                 </li>
@@ -310,19 +311,39 @@ const Addgrouptourr = () => {
                         Name of Guest<span className="error-star">*</span>
                       </label>
                       <Select
-                        options={nameOptions.map(item => ({ value: item.guestId, label: item.guestName }))}
+                        options={nameOptions.map((item) => ({
+                          value: item.guestId,
+                          label: item.guestName,
+                        }))}
                         isClearable
                         isSearchable
                         name="nameofguest"
-                        onInputChange={(inputValue) => setSearchTerm(inputValue)}
+                        onInputChange={(inputValue) =>
+                          setSearchTerm(inputValue)
+                        }
                         onChange={handleNameChange}
                         value={
-                          nameOptions.find(item => item.guestName == validation.values.nameofguest)
-                            ? nameOptions.find(item => item.guestName == validation.values.nameofguest)
-                            : { value: validation.values.nameofguest, label: validation.values.nameofguest }
+                          nameOptions.find(
+                            (item) =>
+                              item.guestName == validation.values.nameofguest
+                          )
+                            ? nameOptions.find(
+                                (item) =>
+                                  item.guestName ==
+                                  validation.values.nameofguest
+                              )
+                            : {
+                                value: validation.values.nameofguest,
+                                label: validation.values.nameofguest,
+                              }
                         }
                       />
-                      <ErrorMessageComponent errors={validation.errors} fieldName={'nameofguest'} touched={validation.touched} key={'nameofguest'} />
+                      <ErrorMessageComponent
+                        errors={validation.errors}
+                        fieldName={"nameofguest"}
+                        touched={validation.touched}
+                        key={"nameofguest"}
+                      />
                     </div>
                     <div className="mb-2 col-md-3">
                       <label className="form-label">
@@ -337,7 +358,12 @@ const Addgrouptourr = () => {
                         onBlur={validation.handleBlur}
                         value={validation.values.email}
                       />
-                      <ErrorMessageComponent errors={validation.errors} fieldName={'email'} touched={validation.touched} key={'email'} />
+                      <ErrorMessageComponent
+                        errors={validation.errors}
+                        fieldName={"email"}
+                        touched={validation.touched}
+                        key={"email"}
+                      />
                     </div>
                     <div className="mb-2 col-md-3">
                       <label className="form-label">
@@ -364,7 +390,12 @@ const Addgrouptourr = () => {
                           value={validation.values.contact}
                         />
                       </div>
-                      <ErrorMessageComponent errors={validation.errors} fieldName={'contact'} touched={validation.touched} key={'contact'} />
+                      <ErrorMessageComponent
+                        errors={validation.errors}
+                        fieldName={"contact"}
+                        touched={validation.touched}
+                        key={"contact"}
+                      />
                     </div>
 
                     <div className="card-header card-header-title">
@@ -385,7 +416,7 @@ const Addgrouptourr = () => {
                             "tourname",
                             selectedOption ? selectedOption.value : ""
                           );
-                          getAvailableSeates(selectedOption.value)
+                          getAvailableSeates(selectedOption.value);
                         }}
                         onBlur={validation.handleBlur}
                         value={tourName.find(
@@ -393,7 +424,12 @@ const Addgrouptourr = () => {
                             option.value === validation.values.tourName
                         )}
                       />
-                      <ErrorMessageComponent errors={validation.errors} fieldName={'tourname'} touched={validation.touched} key={'tourname'} />
+                      <ErrorMessageComponent
+                        errors={validation.errors}
+                        fieldName={"tourname"}
+                        touched={validation.touched}
+                        key={"tourname"}
+                      />
                     </div>
                     <div className="mb-2 col-md-4">
                       <div className="row">
@@ -411,7 +447,12 @@ const Addgrouptourr = () => {
                             onBlur={validation.handleBlur}
                             value={validation.values.adults}
                           />
-                          <ErrorMessageComponent errors={validation.errors} fieldName={'adults'} touched={validation.touched} key={'adults'} />
+                          <ErrorMessageComponent
+                            errors={validation.errors}
+                            fieldName={"adults"}
+                            touched={validation.touched}
+                            key={"adults"}
+                          />
                         </div>
                         <div className="col-sm-6 pax-child">
                           <label>Pax(Children)</label>
@@ -423,13 +464,20 @@ const Addgrouptourr = () => {
                             onBlur={validation.handleBlur}
                             value={validation.values.childs}
                           />
-                          <ErrorMessageComponent errors={validation.errors} fieldName={'childs'} touched={validation.touched} key={'childs'} />
+                          <ErrorMessageComponent
+                            errors={validation.errors}
+                            fieldName={"childs"}
+                            touched={validation.touched}
+                            key={"childs"}
+                          />
                         </div>
                       </div>
                     </div>
 
                     <div className="mb-2 col-md-4">
-                      <label>Enquiry Reference<span className="error-star">*</span></label>
+                      <label>
+                        Enquiry Reference<span className="error-star">*</span>
+                      </label>
                       <Select
                         styles={customStyles}
                         className="basic-single"
@@ -442,25 +490,32 @@ const Addgrouptourr = () => {
                             selectedOption ? selectedOption.value : ""
                           );
                           if (selectedOption.value != 9) {
-                            validation.setFieldValue(
-                              "guestenquiryref",
-                              ""
-                            );
+                            validation.setFieldValue("guestenquiryref", "");
                           }
                         }}
                         onBlur={validation.handleBlur}
                         value={
-                          validation.values.enquiryref ? enquiryref.find(
-                            (option) =>
-                              option.value === validation.values.enquiryref
-                          ) : null
+                          validation.values.enquiryref
+                            ? enquiryref.find(
+                                (option) =>
+                                  option.value === validation.values.enquiryref
+                              )
+                            : null
                         }
                       />
-                      <ErrorMessageComponent errors={validation.errors} fieldName={'enquiryref'} touched={validation.touched} key={'enquiryref'} />
+                      <ErrorMessageComponent
+                        errors={validation.errors}
+                        fieldName={"enquiryref"}
+                        touched={validation.touched}
+                        key={"enquiryref"}
+                      />
                     </div>
                     {validation?.values?.enquiryref == 9 && (
                       <div className="mb-2 col-md-4">
-                        <label>Guest Reference Id<span className="error-star">*</span></label>
+                        <label>
+                          Guest Reference Id
+                          <span className="error-star">*</span>
+                        </label>
                         <Select
                           styles={customStyles}
                           className="basic-single"
@@ -479,13 +534,16 @@ const Addgrouptourr = () => {
                               option.value === validation.values.guestenquiryref
                           )}
                         />
-                        <ErrorMessageComponent errors={validation.errors} fieldName={'guestenquiryref'} touched={validation.touched} key={'guestenquiryref'} />
+                        <ErrorMessageComponent
+                          errors={validation.errors}
+                          fieldName={"guestenquiryref"}
+                          touched={validation.touched}
+                          key={"guestenquiryref"}
+                        />
                       </div>
                     )}
                     <div className="mb-2 col-md-4">
-                      <label className="form-label">
-                        Priority
-                      </label>
+                      <label className="form-label">Priority</label>
                       <Select
                         styles={customStyles}
                         className="basic-single"
@@ -519,7 +577,7 @@ const Addgrouptourr = () => {
                         value={validation.values.nextfollowup}
                       />
                       {validation.touched.nextfollowup &&
-                        validation.errors.nextfollowup ? (
+                      validation.errors.nextfollowup ? (
                         <span className="error">
                           {validation.errors.nextfollowup}
                         </span>

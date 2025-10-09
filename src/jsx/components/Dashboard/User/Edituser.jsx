@@ -11,75 +11,104 @@ import "react-toastify/dist/ReactToastify.css";
 import { Switch } from "@mui/material";
 import axios from "axios";
 import { NoImage } from "../../../utils/assetsPaths";
-import { scrollIntoViewHelper } from "../../../utils/scrollIntoViewHelper"
+import { scrollIntoViewHelper } from "../../../utils/scrollIntoViewHelper";
 import BackButton from "../../common/BackButton";
 const url = import.meta.env.VITE_WAARI_BASEURL;
 
+// const validationSchema = Yup.object().shape({
+//   userName: Yup.string().required("Name is required"),
+//   email: Yup.string().email("Invalid email").required("Please enter the email"),
+//   contact: Yup.string()
+//     .matches(/^\d+$/, "Phone number must be numeric")
+//     .min(10, "Contact must be at least 10 digits long")
+//     .required("Please enter the Phone Number")
+//     .max(10, "Contact must be at at most 10 digits long")
+//     .required("Phone is required"),
+//   roleId: Yup.object().required("Role is required"),
+//   positionId: Yup.object().required("Position is required"),
+//   sectorId: Yup.object().when("positionId", {
+//     is: (position) => position?.value === 2, // Check if positionId has a value of 2
+//     then: Yup.object().required("Sector is required when Position is 2"),
+//     otherwise: Yup.object().nullable(), // Optional when positionId is not 2
+//   }),
+//   departmentId: Yup.object().required("Department is required"),
+//   address: Yup.string().required("Address is required"),
+//   status: Yup.boolean().required("Status is required"),
+//   establishmentName: Yup.string().required("Establishment Name is required"),
+//   establishmentTypeId: Yup.object().required("Establishment Type is required"),
+//   adharNo: Yup.string()
+//     .matches(
+//       /(^[0-9]{4}[0-9]{4}[0-9]{4}$)|(^[0-9]{4}\s[0-9]{4}\s[0-9]{4}$)|(^[0-9]{4}-[0-9]{4}-[0-9]{4}$)/,
+//       "Invalid Aadhaar number format. Please enter in the format XXXX XXXX XXXX"
+//     )
+//     .required("Aadhaar number is required"),
+//   adharCard: Yup.string().required("Aadhaar Card is required"),
+//   panNo: Yup.string()
+//     .matches(
+//       /^[A-Z]{5}[0-9]{4}[A-Z]$/,
+//       "Invalid PAN number format. Please enter in the format ABCDE1234F"
+//     )
+//     .required("PAN number is required"),
+//   pan: Yup.string().required("Pan Card is required"),
+//   gender: Yup.string().required("Gender is required"),
+//   city: Yup.string().required("City is required"),
+//   pincode: Yup.string()
+//     .required("Pincode is required")
+//     .matches(/^[1-9][0-9]{5}$/, "Pincode must be a 6-digit number"),
+//   state: Yup.string().required("State is required"),
+//   alternatePhone: Yup.string()
+//     .matches(/^\d+$/, "Alternative Phone number must be numeric")
+//     .min(10, "Contact must be at least 10 digits long")
+//     .max(10, "Contact must be at at most 10 digits long"),
+//   shopAct: Yup.string().required("Shop Act is required"),
+//   accName: Yup.string()
+//     .required("Account name is required")
+//     .matches(/^[a-zA-Z\s]+$/, "Invalid Account name"),
+//   accNo: Yup.string()
+//     .required("Account number is required")
+//     .matches(/^\d{9,18}$/, "Account number must be 9 to 18 digits"),
+//   bankName: Yup.string()
+//     .required("Bank name is required")
+//     .matches(/^[a-zA-Z\s]+$/, "Invalid bank name"),
+//   branch: Yup.string()
+//     .required("Branch is required")
+//     .matches(/^[a-zA-Z\s]+$/, "Invalid branch name"),
+//   ifsc: Yup.string()
+//     .required("IFSC code is required")
+//     .matches(/^[A-Za-z]{4}\d{7}$/, "Invalid IFSC code. Format: ABCD0123456"),
+//   cheque: Yup.string().required("cheque is required"),
+//   logo: Yup.string().required("Logo is required"),
+// });
 const validationSchema = Yup.object().shape({
-  userName: Yup.string().required("Name is required"),
-  email: Yup.string().email("Invalid email").required("Please enter the email"),
-  contact: Yup.string()
-    .matches(/^\d+$/, "Phone number must be numeric")
-    .min(10, "Contact must be at least 10 digits long")
-    .required("Please enter the Phone Number")
-    .max(10, "Contact must be at at most 10 digits long")
-    .required("Phone is required"),
-  roleId: Yup.object().required("Role is required"),
-  positionId: Yup.object().required("Position is required"),
-  sectorId: Yup.object().when("positionId", {
-    is: (position) => position?.value === 2, // Check if positionId has a value of 2
-    then: Yup.object().required("Sector is required when Position is 2"),
-    otherwise: Yup.object().nullable(), // Optional when positionId is not 2
-  }),
-  departmentId: Yup.object().required("Department is required"),
-  address: Yup.string().required("Address is required"),
-  status: Yup.boolean().required("Status is required"),
-  establishmentName: Yup.string().required("Establishment Name is required"),
-  establishmentTypeId: Yup.object().required("Establishment Type is required"),
-  adharNo: Yup.string()
-    .matches(
-      /(^[0-9]{4}[0-9]{4}[0-9]{4}$)|(^[0-9]{4}\s[0-9]{4}\s[0-9]{4}$)|(^[0-9]{4}-[0-9]{4}-[0-9]{4}$)/,
-      "Invalid Aadhaar number format. Please enter in the format XXXX XXXX XXXX"
-    )
-    .required("Aadhaar number is required"),
-  adharCard: Yup.string().required("Aadhaar Card is required"),
-  panNo: Yup.string()
-    .matches(
-      /^[A-Z]{5}[0-9]{4}[A-Z]$/,
-      "Invalid PAN number format. Please enter in the format ABCDE1234F"
-    )
-    .required("PAN number is required"),
-  pan: Yup.string().required("Pan Card is required"),
-  gender: Yup.string().required("Gender is required"),
-  city: Yup.string().required("City is required"),
-  pincode: Yup.string()
-    .required("Pincode is required")
-    .matches(/^[1-9][0-9]{5}$/, "Pincode must be a 6-digit number"),
-  state: Yup.string().required("State is required"),
-  alternatePhone: Yup.string()
-    .matches(/^\d+$/, "Alternative Phone number must be numeric")
-    .min(10, "Contact must be at least 10 digits long")
-    .max(10, "Contact must be at at most 10 digits long"),
-  shopAct: Yup.string().required("Shop Act is required"),
-  accName: Yup.string()
-    .required("Account name is required")
-    .matches(/^[a-zA-Z\s]+$/, "Invalid Account name"),
-  accNo: Yup.string()
-    .required("Account number is required")
-    .matches(/^\d{9,18}$/, "Account number must be 9 to 18 digits"),
-  bankName: Yup.string()
-    .required("Bank name is required")
-    .matches(/^[a-zA-Z\s]+$/, "Invalid bank name"),
-  branch: Yup.string()
-    .required("Branch is required")
-    .matches(/^[a-zA-Z\s]+$/, "Invalid branch name"),
-  ifsc: Yup.string()
-    .required("IFSC code is required")
-    .matches(/^[A-Za-z]{4}\d{7}$/, "Invalid IFSC code. Format: ABCD0123456"),
-  cheque: Yup.string().required("cheque is required"),
-  logo: Yup.string().required("Logo is required"),
+  userName: Yup.string(),
+  email: Yup.string().email("Invalid email"),
+  contact: Yup.string(),
+  roleId: Yup.object(),
+  positionId: Yup.object(),
+  sectorId: Yup.object(),
+  departmentId: Yup.object(),
+  address: Yup.string(),
+  status: Yup.boolean(),
+  establishmentName: Yup.string(),
+  establishmentTypeId: Yup.object(),
+  adharNo: Yup.string(),
+  adharCard: Yup.string(),
+  panNo: Yup.string(),
+  pan: Yup.string(),
+  gender: Yup.string(),
+  city: Yup.string(),
+  pincode: Yup.string(),
+  state: Yup.string(),
+  alternatePhone: Yup.string(),
+  shopAct: Yup.string(),
+  accName: Yup.string(),
+  accNo: Yup.string(),
+  bankName: Yup.string(),
+  branch: Yup.string(),
+  ifsc: Yup.string(),
+  cheque: Yup.string(),
+  logo: Yup.string(),
 });
-
 const establishmentOption = [
   { value: "1", label: "Proprietorship " },
   { value: "2", label: " Partnership" },
@@ -96,8 +125,6 @@ const EditUser = () => {
   const [departmentOptions, setDepartmentOptions] = useState([]);
   const [sectorOptions, setSectorOptions] = useState([]);
 
-
-
   const fetchDropdownOptions = async (endpoint, mapFields) => {
     try {
       const response = await get(endpoint);
@@ -111,12 +138,20 @@ const EditUser = () => {
     }
   };
 
-
   useEffect(() => {
     const fetchOptions = async () => {
-      const roleOptions = await fetchDropdownOptions(`/dropdown-roles`, { value: 'roleId', label: 'roleName' });
-      const positionOptions = await fetchDropdownOptions(`/dropdown-positions`, { value: 'positionId', label: 'positionName' });
-      const departmentOptions = await fetchDropdownOptions(`/dropdown-department`, { value: 'departmentId', label: 'departmentName' });
+      const roleOptions = await fetchDropdownOptions(`/dropdown-roles`, {
+        value: "roleId",
+        label: "roleName",
+      });
+      const positionOptions = await fetchDropdownOptions(
+        `/dropdown-positions`,
+        { value: "positionId", label: "positionName" }
+      );
+      const departmentOptions = await fetchDropdownOptions(
+        `/dropdown-department`,
+        { value: "departmentId", label: "departmentName" }
+      );
 
       setRoleOptions(roleOptions);
       setPositionOptions(positionOptions);
@@ -138,7 +173,6 @@ const EditUser = () => {
       console.log(error);
     }
   };
-
 
   // this hook is for form validation
   const formik = useFormik({
@@ -253,7 +287,7 @@ const EditUser = () => {
   // Get users data from api
   const getUsersDetails = async () => {
     try {
-      const result = await get(`view-users-data?userId=${id}`);
+      const result = await get(`view-users-data?userId=${userId}`);
       const {
         userName,
         email,
@@ -282,7 +316,7 @@ const EditUser = () => {
         logo,
         pan,
         panNo,
-        gender
+        gender,
       } = result?.data?.data;
       formik.setFieldValue("userName", userName || "");
       formik.setFieldValue("email", email || "");
@@ -291,19 +325,23 @@ const EditUser = () => {
 
       formik.setFieldValue("roleId", roleIdOption);
 
-      const positionIdOption = positionOptions.find((item) => item.value == positionId);
+      const positionIdOption = positionOptions.find(
+        (item) => item.value == positionId
+      );
 
       formik.setFieldValue("positionId", positionIdOption);
 
-
-      const departmentIdOption = departmentOptions.find((item) => item.value == departmentId);
+      const departmentIdOption = departmentOptions.find(
+        (item) => item.value == departmentId
+      );
 
       formik.setFieldValue("departmentId", departmentIdOption);
 
+      const sectorIdOption = sectorOptions.find(
+        (item) => item.value == sectorId
+      );
 
-      const sectorIdOption = sectorOptions.find((item) => item.value == sectorId);
-
-      if (positionId == 2) getSectorOptions()
+      if (positionId == 2) getSectorOptions();
 
       formik.setFieldValue("sectorId", sectorIdOption);
 
@@ -338,9 +376,8 @@ const EditUser = () => {
     }
   };
 
-
   useEffect(() => {
-    getUsersDetails()
+    getUsersDetails();
   }, [roleOptions]);
 
   useEffect(() => {
@@ -370,21 +407,17 @@ const EditUser = () => {
     };
   }, []);
 
-
-
   useEffect(() => {
-
     if (!formik.isSubmitting) {
       if (Object.keys(formik.errors).length) {
-        scrollIntoViewHelper(formik.errors)
+        scrollIntoViewHelper(formik.errors);
       }
     }
-
-  }, [formik.isSubmitting])
+  }, [formik.isSubmitting]);
   return (
     <>
       <div className="row">
-        <div className="col-lg-12" style={{ paddingTop: '40px' }}>
+        <div className="col-lg-12" style={{ paddingTop: "40px" }}>
           <div className="card">
             <div className="row page-titles mx-0 fixed-top-breadcrumb">
               <ol className="breadcrumb">
@@ -398,7 +431,7 @@ const EditUser = () => {
                   <Link to="/users-list">Users Information</Link>
                 </li>
                 <li className="breadcrumb-item  ">
-                  <Link to='javascript:void(0)'>Edit User</Link>
+                  <Link to="javascript:void(0)">Edit User</Link>
                 </li>
               </ol>
             </div>
@@ -435,7 +468,9 @@ const EditUser = () => {
 
                   <div className="col-md-4 col-lg-3 col-sm-6 col-12">
                     <div className="mb-2">
-                      <label>Email <span className="error-star">*</span></label>
+                      <label>
+                        Email <span className="error-star">*</span>
+                      </label>
                       <input
                         type="text"
                         id="email"
@@ -635,10 +670,9 @@ const EditUser = () => {
                         classNamePrefix="select"
                         options={positionOptions}
                         onChange={(event) => {
-                          formik.setFieldValue("positionId", event)
-                          event.value == 2 ? getSectorOptions() : ""
-                        }
-                        }
+                          formik.setFieldValue("positionId", event);
+                          event.value == 2 ? getSectorOptions() : "";
+                        }}
                         value={formik.values.positionId}
                       />
                       <ErrorMessageComponent
@@ -819,30 +853,33 @@ const EditUser = () => {
                     </div>
                   </div>
 
-
-                  {formik.values.positionId?.value == 2 ? <div className="col-md-4 col-sm-6 col-lg-3 col-12">
-                    <div className="mb-2">
-                      <label>
-                        Sector<span className="error-star">*</span>
-                      </label>
-                      <Select
-                        id="sectorId"
-                        name="sectorId"
-                        className="basic-single select-role"
-                        classNamePrefix="select"
-                        options={sectorOptions}
-                        onChange={(event) =>
-                          formik.setFieldValue("sectorId", event)
-                        }
-                        value={formik.values.sectorId}
-                      />
-                      <ErrorMessageComponent
-                        errors={formik.errors}
-                        fieldName={"sectorId"}
-                        touched={formik.touched}
-                      />
+                  {formik.values.positionId?.value == 2 ? (
+                    <div className="col-md-4 col-sm-6 col-lg-3 col-12">
+                      <div className="mb-2">
+                        <label>
+                          Sector<span className="error-star">*</span>
+                        </label>
+                        <Select
+                          id="sectorId"
+                          name="sectorId"
+                          className="basic-single select-role"
+                          classNamePrefix="select"
+                          options={sectorOptions}
+                          onChange={(event) =>
+                            formik.setFieldValue("sectorId", event)
+                          }
+                          value={formik.values.sectorId}
+                        />
+                        <ErrorMessageComponent
+                          errors={formik.errors}
+                          fieldName={"sectorId"}
+                          touched={formik.touched}
+                        />
+                      </div>
                     </div>
-                  </div> : ""}
+                  ) : (
+                    ""
+                  )}
 
                   <div className="col-md-4 col-lg-2 col-sm-6 col-12">
                     <div className="mb-2">
@@ -991,8 +1028,6 @@ const EditUser = () => {
                       />
                     </div>
                   </div>
-
-
 
                   <div className="col-md-4 col-lg-3 col-sm-6 col-12">
                     <div className="mb-2">

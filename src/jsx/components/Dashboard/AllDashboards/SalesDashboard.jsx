@@ -107,7 +107,7 @@ const Home = () => {
 		try {
 			setIsTableLoading(true);
 			const result = await get(
-				`birthday-lists?page=${page}&perPage=${perPageItem}`
+				`/billing/birthday-lists?page=${page}&perPage=${perPageItem}`
 			);
 
 			setTotalCount(result.data.lastPage);
@@ -139,7 +139,7 @@ const Home = () => {
 		try {
 			setIsFollowsLoading(true);
 			const response = await get(
-				`/enquiry-follow-custom?perPage=10&page=1`
+				`/billing/enquiry-follow-custom?perPage=10&page=1`
 			);
 			setTodaysCTFolloups(response?.data?.data);
 			setIsFollowsLoading(false);
@@ -160,7 +160,7 @@ const Home = () => {
 	//get loyalty booking
 	const getLoyaltyBooking = async () => {
 		try {
-			const result = await get(`loyalty-booking`);
+			const result = await get(`/billing/loyalty-booking`);
 
 			setLoyaltyBooking(result.data.loyaltyBooking);
 		} catch (error) {
@@ -171,7 +171,7 @@ const Home = () => {
 	//get welcome booking
 	const getWelcomeBooking = async () => {
 		try {
-			const result = await get(`welcome-booking`);
+			const result = await get(`/billing/welcome-booking`);
 
 			setWelcomeBooking(result.data.welcomeBooking);
 		} catch (error) {
@@ -182,7 +182,7 @@ const Home = () => {
 	//get refferal rate
 	const getRefferalRate = async () => {
 		try {
-			const result = await get(`referral-rate`);
+			const result = await get(`/billing/referral-rate`);
 
 			setRefferalRate(result.data.referralRate);
 		} catch (error) {
@@ -193,7 +193,7 @@ const Home = () => {
 	//get more booking counts like nextRankCount, currentBookingCount, topTenRankCount, topFiveRankCount
 	const getMoreBookingCount = async () => {
 		try {
-			const result = await get(`more-booking-count`);
+			const result = await get(`/billing/more-booking-count`);
 
 			setNextRankCount(result.data.nextRankCount);
 			setTopTenRankCount(result.data.topTenRankCount);
@@ -207,7 +207,7 @@ const Home = () => {
 	//get top 5 sales partner data
 	const getTop5SalesPartnerData = async () => {
 		try {
-			const result = await get(`top-sales-partner`);
+			const result = await get(`/billing/top-sales-partner`);
 			setTop5SalesPartner(result.data?.topSales);
 		} catch (error) {
 			console.log(error);
@@ -218,7 +218,7 @@ const Home = () => {
 	//get monthly target graph for group tour
 	const getMonthlyTargetGraphGt = async () => {
 		try {
-			const result = await get(`monthly-target-graph-gt`);
+			const result = await get(`/billing/monthly-target-graph-gt`);
 			setGtGraphArray(result.data.gtGraphArray);
 			setGtAchieveArray(result.data.gtAchieveArray);
 		} catch (error) {
@@ -229,7 +229,7 @@ const Home = () => {
 	//get Group Tour Target Counts
 	const getGroupTourTargets = async () => {
 		try {
-			const result = await get(`target-gt`);
+			const result = await get(`/billing/target-gt`);
 			setMonthlyTargetGt(result.data.monthlyTarget);
 			setQuarterlyTargetGt(result.data.quarterlyTarget);
 			setYearlyTargetGt(result.data.yearlyTarget);
@@ -249,7 +249,7 @@ const Home = () => {
 	//get enquiry list gt
 	const getEnquiriesGT = async () => {
 		try {
-			const result = await get(`enquiry-list-gt`);
+			const result = await get(`/billing/enquiry-list-gt`);
 			setEnquiriesGT(result.data?.enquiriesGT);
 		} catch (error) {
 			console.log(error);
@@ -259,7 +259,7 @@ const Home = () => {
 	//get enquiry graph gt
 	const getEnquiryGraphGt = async () => {
 		try {
-			const result = await get(`enquiry-graph-gt`);
+			const result = await get(`/billing/enquiry-graph-gt`);
 			setTotalEnquiriesGt(result.data?.totalEnquiriesGt);
 			setConfirmedEnquiriesGt(result.data?.confirmedEnquiriesGt);
 			setLostEnquiriesGt(result.data?.lostEnquiriesGt);
@@ -272,7 +272,7 @@ const Home = () => {
 	//get monthly target graph for customized tour
 	const getMonthlyTargetGraphCt = async () => {
 		try {
-			const result = await get(`monthly-target-graph-ct`);
+			const result = await get(`/billing/monthly-target-graph-ct`);
 			setCtGraphArray(result.data.ctTargetArray);
 			setCtAchieveArray(result.data.ctAchieveArray);
 		} catch (error) {
@@ -283,7 +283,7 @@ const Home = () => {
 	//get Custom Tour Target Counts
 	const getCustomTourTargets = async () => {
 		try {
-			const result = await get(`target-ct`);
+			const result = await get(`/billing/target-ct`);
 			setMonthlyTargetCt(result.data.monthlyTarget);
 			setQuarterlyTargetCt(result.data.quarterlyTarget);
 			setYearlyTargetCt(result.data.yearlyTarget);
@@ -303,7 +303,7 @@ const Home = () => {
 	//get enquiry list ct
 	const getEnquiriesCT = async () => {
 		try {
-			const result = await get(`enquiry-list-ct`);
+			const result = await get(`/billing/enquiry-list-ct`);
 			setEnquiriesCT(result.data?.enquiriesCt);
 		} catch (error) {
 			console.log(error);
@@ -313,7 +313,7 @@ const Home = () => {
 	//get enquiry graph ct
 	const getEnquiryGraphCt = async () => {
 		try {
-			const result = await get(`enquiry-graph-ct`);
+			const result = await get(`/billing/enquiry-graph-ct`);
 			setTotalEnquiriesCt(result.data?.totalEnquiriesCt);
 			setConfirmedEnquiriesCt(result.data?.confirmedEnquiriesCt);
 			setLostEnquiriesCt(result.data?.lostEnquiriesCt);
@@ -441,7 +441,7 @@ const Home = () => {
 			width: 40,
 		},
 
-	
+
 		{
 			title: "Follow up Date",
 			dataIndex: "nextFollowUp",
@@ -462,7 +462,7 @@ const Home = () => {
 			sortable: true,
 		},
 
-	
+
 		{
 			title: "Pax",
 			dataIndex: "paxNo",
@@ -475,7 +475,7 @@ const Home = () => {
 			key: "userName",
 			width: 90,
 		},
-	
+
 	];
 
 	const todaysFollowupColumnsCT = [
@@ -517,7 +517,7 @@ const Home = () => {
 			key: "userName",
 			width: 90,
 		},
-	
+
 	]
 
 	const { changeBackground } = useContext(ThemeContext);
@@ -620,7 +620,7 @@ const Home = () => {
 				) : (
 					""
 				)}
-					{hasComponentPermission(permissions, 32) ? (
+				{hasComponentPermission(permissions, 32) ? (
 					<div className="col-lg-6 col-sm-12">
 						<div className="card">
 							<div className="card-body ">
@@ -851,8 +851,8 @@ const Home = () => {
 						)}
 				</div>
 				{hasComponentPermission(permissions, 13) && (
-				<div className="col-lg-6 col-sm-12">
-					
+					<div className="col-lg-6 col-sm-12">
+
 						<div className="card">
 							<div className="card-body">
 								<div className="card-header pt-0" style={{ paddingLeft: "0" }}>
@@ -864,8 +864,8 @@ const Home = () => {
 								/>
 							</div>
 						</div>
-					
-				</div>
+
+					</div>
 				)}
 				{hasComponentPermission(permissions, 17) ||
 					hasComponentPermission(permissions, 19) ? (
@@ -963,7 +963,7 @@ const Home = () => {
 					</div>
 				)}
 
-				
+
 
 				{hasComponentPermission(permissions, 20) && (
 					<div className="col-md-12">
@@ -1052,7 +1052,7 @@ const Home = () => {
 
 			{hasComponentPermission(permissions, 21) && (
 				<div className="row">
-										<div className="col-lg-3 col-sm-6">
+					<div className="col-lg-3 col-sm-6">
 						<div className="card bg-card">
 							<div className="card-body">
 								<div className="d-flex align-items-end pb-2 justify-content-between">
@@ -1086,7 +1086,7 @@ const Home = () => {
 										</div>
 									</div>
 								) : (
-									<div  style={{textTransform:'capitalize',color:"#ffc504",fontWeight:"600"}}>You are in top 10</div>
+									<div style={{ textTransform: 'capitalize', color: "#ffc504", fontWeight: "600" }}>You are in top 10</div>
 								)}
 							</div>
 						</div>

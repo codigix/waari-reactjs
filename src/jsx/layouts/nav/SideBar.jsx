@@ -103,7 +103,7 @@ const SideBar = () => {
 
     const getNewNofifyCounts = async () => {
         try {
-            const response = await get(`/get-new-reqests-count`);
+            // const response = await get(`/get-new-reqests-count`);
             setCounts({
                 loyaltyCount: response.data["loyalty-guests"],
                 allLoyaltyCount: response.data["all-loyalty-guests"],

@@ -555,7 +555,7 @@ function EditTailorMadeJourney() {
             nameoftour: "",
             tourcode: "",
             tours: null,
-            destination: null,
+            destination: null,  
             departure: null,
             country: null,
             state: null,

@@ -15,60 +15,86 @@ import BackButton from "../../common/BackButton";
 
 const url = import.meta.env.VITE_WAARI_BASEURL;
 
+// const validationSchema = Yup.object().shape({
+// 	userName: Yup.string().required("Name is required"),
+// 	email: Yup.string().email("Invalid email").required("Please enter the email"),
+// 	phone: Yup.string()
+// 		.matches(/^\d+$/, "Phone number must be numeric")
+// 		.min(10, "Contact must be at least 10 digits long")
+// 		.required("Please enter the Phone Number")
+// 		.max(10, "Contact must be at at most 10 digits long")
+// 		.required("Phone is required"),
+// 	address: Yup.string().required("Address is required"),
+// 	establishmentName: Yup.string().required("Establishment Name is required"),
+// 	establishmentTypeId: Yup.object().required("Establishment Type is required"),
+// 	adharNo: Yup.string()
+// 		.matches(
+// 			/(^[0-9]{4}[0-9]{4}[0-9]{4}$)|(^[0-9]{4}\s[0-9]{4}\s[0-9]{4}$)|(^[0-9]{4}-[0-9]{4}-[0-9]{4}$)/,
+// 			"Invalid Aadhaar number format. Please enter in the format XXXX XXXX XXXX"
+// 		)
+// 		.required("Aadhaar number is required"),
+// 	adharCard: Yup.string().required("Aadhaar Card is required"),
+// 	panNo: Yup.string()
+// 		.matches(
+// 			/^[A-Z]{5}[0-9]{4}[A-Z]$/,
+// 			"Invalid PAN number format. Please enter in the format ABCDE1234F"
+// 		)
+// 		.required("PAN number is required"),
+// 	pan: Yup.string().required("Pan Card is required"),
+// 	city: Yup.string().required("City is required"),
+// 	pincode: Yup.string()
+// 		.required("Pincode is required")
+// 		.matches(/^[1-9][0-9]{5}$/, "Pincode must be a 6-digit number"),
+// 	state: Yup.string().required("State is required"),
+// 	alternatePhone: Yup.string()
+// 		.matches(/^\d+$/, "Alternative Phone number must be numeric")
+// 		.min(10, "Contact must be at least 10 digits long")
+// 		.max(10, "Contact must be at at most 10 digits long"),
+// 	shopAct: Yup.string(),
+// 	accName: Yup.string()
+// 		.required("Account name is required")
+// 		.matches(/^[a-zA-Z\s]+$/, "Invalid Account name"),
+// 	accNo: Yup.string()
+// 		.required("Account number is required")
+// 		.matches(/^\d{9,18}$/, "Account number must be 9 to 18 digits"),
+// 	bankName: Yup.string()
+// 		.required("Bank name is required")
+// 		.matches(/^[a-zA-Z\s]+$/, "Invalid Bank name"),
+// 	branch: Yup.string()
+// 		.required("Branch name is required")
+// 		.matches(/^[a-zA-Z\s]+$/, "Invalid Branch name"),
+// 	ifsc: Yup.string()
+// 		.required("IFSC code is required")
+// 		.matches(/^[A-Za-z]{4}\d{7}$/, "Invalid IFSC code. Format: ABCD0123456"),
+// 	cheque: Yup.string(),
+// 	logo: Yup.string(),
+// });
 const validationSchema = Yup.object().shape({
-	userName: Yup.string().required("Name is required"),
-	email: Yup.string().email("Invalid email").required("Please enter the email"),
-	phone: Yup.string()
-		.matches(/^\d+$/, "Phone number must be numeric")
-		.min(10, "Contact must be at least 10 digits long")
-		.required("Please enter the Phone Number")
-		.max(10, "Contact must be at at most 10 digits long")
-		.required("Phone is required"),
-	address: Yup.string().required("Address is required"),
-	establishmentName: Yup.string().required("Establishment Name is required"),
-	establishmentTypeId: Yup.object().required("Establishment Type is required"),
-	adharNo: Yup.string()
-		.matches(
-			/(^[0-9]{4}[0-9]{4}[0-9]{4}$)|(^[0-9]{4}\s[0-9]{4}\s[0-9]{4}$)|(^[0-9]{4}-[0-9]{4}-[0-9]{4}$)/,
-			"Invalid Aadhaar number format. Please enter in the format XXXX XXXX XXXX"
-		)
-		.required("Aadhaar number is required"),
-	adharCard: Yup.string().required("Aadhaar Card is required"),
-	panNo: Yup.string()
-		.matches(
-			/^[A-Z]{5}[0-9]{4}[A-Z]$/,
-			"Invalid PAN number format. Please enter in the format ABCDE1234F"
-		)
-		.required("PAN number is required"),
-	pan: Yup.string().required("Pan Card is required"),
-	city: Yup.string().required("City is required"),
-	pincode: Yup.string()
-		.required("Pincode is required")
-		.matches(/^[1-9][0-9]{5}$/, "Pincode must be a 6-digit number"),
-	state: Yup.string().required("State is required"),
-	alternatePhone: Yup.string()
-		.matches(/^\d+$/, "Alternative Phone number must be numeric")
-		.min(10, "Contact must be at least 10 digits long")
-		.max(10, "Contact must be at at most 10 digits long"),
+	userName: Yup.string(),
+	email: Yup.string(),
+	phone: Yup.string(),
+	address: Yup.string(),
+	establishmentName: Yup.string(),
+	establishmentTypeId: Yup.object(),
+	adharNo: Yup.string(),
+	adharCard: Yup.string(),
+	panNo: Yup.string(),
+	pan: Yup.string(),
+	city: Yup.string(),
+	pincode: Yup.string(),
+	state: Yup.string(),
+	alternatePhone: Yup.string(),
 	shopAct: Yup.string(),
-	accName: Yup.string()
-		.required("Account name is required")
-		.matches(/^[a-zA-Z\s]+$/, "Invalid Account name"),
-	accNo: Yup.string()
-		.required("Account number is required")
-		.matches(/^\d{9,18}$/, "Account number must be 9 to 18 digits"),
-	bankName: Yup.string()
-		.required("Bank name is required")
-		.matches(/^[a-zA-Z\s]+$/, "Invalid Bank name"),
-	branch: Yup.string()
-		.required("Branch name is required")
-		.matches(/^[a-zA-Z\s]+$/, "Invalid Branch name"),
-	ifsc: Yup.string()
-		.required("IFSC code is required")
-		.matches(/^[A-Za-z]{4}\d{7}$/, "Invalid IFSC code. Format: ABCD0123456"),
+	accName: Yup.string(),
+	accNo: Yup.string(),
+	bankName: Yup.string(),
+	branch: Yup.string(),
+	ifsc: Yup.string(),
 	cheque: Yup.string(),
 	logo: Yup.string(),
 });
+
+
 const establishmentOption = [
 	{ value: "1", label: "Proprietorship " },
 	{ value: "2", label: " Partnership" },
@@ -86,7 +112,7 @@ function Profile() {
 	// Get sales profile data from api
 	const getSalesProfileDetails = async () => {
 		try {
-			const result = await get(`user-profile?userId=${userId}`);
+			const result = await get(`/user/user-profile?userId=${userId}`);
 			const {
 				userName,
 				email,
@@ -207,7 +233,8 @@ function Profile() {
 					cheque: values.cheque,
 					logo: values.logo,
 				};
-				const result = await post("edit-user-profile", data);
+				const result = await post("user/edit-user-profile", data);
+				console.log("result", result);
 				toast.success(result?.data?.message);
 				setIsLoading(false);
 			} catch (error) {
@@ -222,8 +249,7 @@ function Profile() {
 			const formData = new FormData();
 			formData.append("image", file);
 			const responseData = await axios.post(
-				`
-            ${url}/image-upload`,
+				`${import.meta.env.VITE_WAARI_BASEURL}/user/image-upload`,
 				formData
 			);
 			toast.success("File uploaded successfully");

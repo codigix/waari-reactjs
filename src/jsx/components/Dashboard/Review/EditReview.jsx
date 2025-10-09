@@ -81,6 +81,7 @@ const EditReview = () => {
             try {
                 setIsLoading(true);
                 const data = {
+                    reviewId:id,
                     tourCode: values.tourCode,
                     imageUrl: values.imageUrl,
                     title: values.title,
@@ -89,7 +90,7 @@ const EditReview = () => {
                     customerName: values.customerName,
                     type: values.type.value
                 };
-                const result = await post(`edit-review?reviewId=${id}`, data);
+                const result = await post(`edit-review`, data);
                 toast.success(result?.data?.message);
                 navigate("/reviews-list");
                 setIsLoading(false);

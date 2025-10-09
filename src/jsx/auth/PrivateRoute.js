@@ -15,6 +15,7 @@ export const hasComponentPermission = (permissions, listId) => {
 };
 
 export const hasMenuPermission = (permissions, content) => {
+  console.log("Checking menu permission with:", { permissions, content });
   if (!Array.isArray(permissions) || !Array.isArray(content)) {
     console.warn("Invalid permissions or content:", { permissions, content });
     return false;

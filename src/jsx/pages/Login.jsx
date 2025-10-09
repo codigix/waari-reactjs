@@ -25,11 +25,12 @@ function Login() {
       try {
         setIsLoading(true);
 
-        const response = await axios.post("http://localhost:3000/api/user-login", {
+        const response = await axios.post(`${import.meta.env.VITE_WAARI_BASEURL}/login`, {
           email: values.email,
           password: values.password,
         });
 
+        console.log("Response:", response);
         if (response?.data?.token) {
           dispatch(login(
             response.data.token,
@@ -138,7 +139,7 @@ function Login() {
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   );
 }

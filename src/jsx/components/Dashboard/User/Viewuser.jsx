@@ -13,31 +13,79 @@ const establishmentOption = [
 ];
 
 const ViewUser = () => {
-  const { id } = useParams();
+  const { userId } = useParams(); // this will fetch userId from the URL
+  console.log("userId:", userId);
   const [userData, setUserData] = useState({});
 
-  // get single users partner data
-  const getUser = async () => {
+  // Fetch single user's partner data
+  const getUser = async (userId) => {
+    if (!userId) return;
+
     try {
-      const response = await get(`view-users-data?userId=${id}`);
-      const establishmentTypeIdOption = establishmentOption.find(
-        (item) => item.value == response?.data?.data?.establishmentTypeId
-      );
-      setUserData({
-        ...response?.data?.data,
-        establishmentTypeId: establishmentTypeIdOption.label
-          ? establishmentTypeIdOption.label
-          : 1,
+      const token = localStorage.getItem("token");
+
+      const response = await get(`/view-users-data`, {
+        headers: { token },
+        params: { userId }, // pass as query param
       });
+
+      const data = response?.data?.data || {};
+
+      const establishmentTypeOption = establishmentOption.find(
+        (item) => item.value == data.establishmentTypeId
+      );
+
+      setUserData({
+        ...data,
+        establishmentTypeId: establishmentTypeOption
+          ? establishmentTypeOption.label
+          : "",
+      });
+
+      if (formik) {
+        formik.setValues({
+          userName: data.userName || "",
+          email: data.email || "",
+          contact: data.contact || "",
+          roleId: roleOptions.find((o) => o.value == data.roleId) || null,
+          positionId:
+            positionOptions.find((o) => o.value == data.positionId) || null,
+          departmentId:
+            departmentOptions.find((o) => o.value == data.departmentId) || null,
+          sectorId: sectorOptions.find((o) => o.value == data.sectorId) || null,
+          address: data.address || "",
+          gender: data.gender || "",
+          status: Boolean(data.status),
+          establishmentName: data.establishmentName || "",
+          establishmentTypeId: establishmentTypeOption || null,
+          adharNo: data.adharNo || "",
+          adharCard: data.adharCard || "",
+          pan: data.pan || "",
+          panNo: data.panNo || "",
+          city: data.city || "",
+          pincode: data.pincode || "",
+          state: data.state || "",
+          alternatePhone: data.alternatePhone || "",
+          shopAct: data.shopAct || "",
+          accName: data.accName || "",
+          accNo: data.accNo || "",
+          bankName: data.bankName || "",
+          branch: data.branch || "",
+          ifsc: data.ifsc || "",
+          cheque: data.cheque || "",
+          logo: data.logo || "",
+        });
+      }
     } catch (error) {
       setUserData({});
-      console.log(error);
+      console.error("Error fetching user:", error);
     }
   };
 
+  // Call in useEffect using userId from URL
   useEffect(() => {
-    getUser();
-  }, []);
+    getUser(userId);
+  }, [userId]);
 
   useEffect(() => {
     let element = document.getElementById("users-list");
@@ -53,7 +101,7 @@ const ViewUser = () => {
 
   return (
     <>
-      <div className="card"  style={{ marginBottom: '40px' }}>
+      <div className="card" style={{ marginBottom: "40px" }}>
         <div className="row page-titles mx-0 fixed-top-breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
@@ -66,7 +114,7 @@ const ViewUser = () => {
               <Link to="/users-list">Users Information</Link>
             </li>
             <li className="breadcrumb-item  ">
-              <Link to='javascript:void(0)'>View Users</Link>
+              <Link to="javascript:void(0)">View Users</Link>
             </li>
           </ol>
         </div>
@@ -79,7 +127,6 @@ const ViewUser = () => {
           <div className="basic-form">
             <form className="needs-validation">
               <div className="mb-2 row">
-
                 {/* <div className="mb-2 row">
                 <div className="col-md-2">
                   <label className="form-label">Users ID.</label>
@@ -123,8 +170,6 @@ const ViewUser = () => {
                     <h6>{userData?.address || ""}</h6>
                   </div>
                 </div>
-
-
 
                 <div className=" col-lg-3 col-sm-6 col-md-4 col-12">
                   <label className="form-label">Role</label>
@@ -173,7 +218,6 @@ const ViewUser = () => {
                     <img src={userData?.adharCard || ""} alt="" />
                   </div>
                 </div>
-
 
                 <div className="mb-2  col-lg-6 col-sm-6 col-md-12 col-12">
                   <label className="form-label">Pan Card</label>
@@ -258,23 +302,19 @@ const ViewUser = () => {
                   <div className="view-details view-img">
                     <img src={userData?.logo || ""} height={"100px"} alt="" />
                   </div>
-
                 </div>
-
               </div>
               <div className="mb-2 row">
                 <div className="col-lg-12 d-flex justify-content-start mt-2">
                   <Link to="/users-list" type="submit" className="btn btn-back">
                     Back
                   </Link>
-
                 </div>
               </div>
             </form>
           </div>
         </div>
       </div>
-
     </>
   );
 };

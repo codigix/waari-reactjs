@@ -402,13 +402,16 @@ const Guesttour = () => {
 	const todaysFollowUp = async () => {
 		try {
 			setIsLoading(true);
+			
 			const response = await get(
 				`/list-group-tour?perPage=${perPageItem}&page=${page}`
 			);
-			setIsLoading(false);
+			console.log("response printed",response.data.data)
+			setIsLoading(false); 	
 			setData(response?.data?.data);
-			setTotalCount(response.data?.lastPage);
+			setTotalCount(response.data?.total);
 			setPerPageItem(response.data.perPage);
+			// setPageCount(response.data.lastPage); 
 		} catch (error) {
 			setIsLoading(false);
 			console.log(error);
@@ -606,7 +609,7 @@ const Guesttour = () => {
 							style={{ marginBottom: "0" }}
 						>
 							<ol className="breadcrumb">
-								
+
 								<li className="breadcrumb-item active">
 									<Link to="/dashboard">Dashboard</Link>
 								</li>

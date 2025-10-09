@@ -28,7 +28,7 @@ const Canceltourform = ({ familyHead, enquiryId }) => {
 		try {
 			setIsLoading(true);
 			const response = await get(
-				`/guests-list-group-tour?enquiryGroupId=${enquiryId}&familyHeadGtId=${familyHead?.familyHeadGtId}`
+				`/billing/guests-list-group-tour?enquiryGroupId=${enquiryId}&familyHeadGtId=${familyHead?.familyHeadGtId}`
 			);
 
 			const tranformedFamilyMembersList = response.data?.data?.map(

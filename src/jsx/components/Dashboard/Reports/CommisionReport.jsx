@@ -46,92 +46,59 @@ const CommisionReport = () => {
   const [isTableLoading, setIsTableLoading] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [data, setData] = useState([]);
-  const [isExporting, setIsExporting] = useState(false);
-  const [year, setYear] = useState({
-    value: new Date().getFullYear(),
-    label: new Date().getFullYear(),
-  });
-  const [selectedMonth, setSelectedMonth] = useState({
-    value: new Date().getMonth() + 1,
-    label: months.find((it) => it.value == new Date().getMonth() + 1)?.label,
-  });
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
 
-  const handlePageChange = (e, page) => {
-    setPage(page);
-  };
-
-  const handleRowsPerPageChange = (rowsPerPage) => {
-    setRowsPerPage(rowsPerPage);
-    setPage(1);
-  };
-
-
-  const { permissions } = useSelector(state => state.auth)
+  const { permissions } = useSelector((state) => state.auth);
 
   const columns = [
     {
       title: "Sr. No.",
-      render: (item, index) => (
-        <>{page * rowsPerPage - rowsPerPage + index + 1}</>
-      ),
+      render: (_, index) => page * rowsPerPage - rowsPerPage + index + 1,
       key: "srNo",
       sortable: true,
     },
-    {
-      title: "Enquiry Id",
-      dataIndex: "enquiryId",
-      key: "enquiryId",
-      sortable: true,
-    },
-    {
-      title: "Guest Name",
-      dataIndex: "guestName",
-      key: "guestName",
-      sortable: true,
-    },
-    {
-      title: "Inr Cost",
-      dataIndex: "inrCost",
-      key: "inrCost",
-      sortable: true,
-    },
-    {
-      title: "Total Cost",
-      dataIndex: "totalCost",
-      key: "totalCost",
-      sortable: true,
-    },
-    {
-      title: "Commission",
-      dataIndex: "commission",
-      key: "commission",
-      sortable: true,
-    },
+    { title: "Enquiry Id", dataIndex: "enquiryId", key: "enquiryId", sortable: true },
+    { title: "Guest Name", dataIndex: "guestName", key: "guestName", sortable: true },
+    { title: "Inr Cost", dataIndex: "inrCost", key: "inrCost", sortable: true },
+    { title: "Total Cost", dataIndex: "totalCost", key: "totalCost", sortable: true },
+    { title: "Commission", dataIndex: "commission", key: "commission", sortable: true },
   ];
 
-  // Get Sales reports Listing month wise
-  const getSalesReportDetailsMonthWise = async (pp) => {
+  // Fetch commission report
+  const getSalesReportDetailsMonthWise = async (currentPage = page) => {
     setIsTableLoading(true);
     try {
       const response = await get(
-        `get-commission-report?&page=${pp || page
-        }&perPage=${rowsPerPage}&year=${year?.value}&month=${selectedMonth.value
-        }`
+        `get-commission-report?page=${currentPage}&perPage=${rowsPerPage}&year=${year}&month=${selectedMonth}`
       );
+
       setData(response.data.data);
       setTotalPages(response.data.lastPage);
-      setIsTableLoading(false);
     } catch (err) {
+      console.error("Error fetching commission report:", err);
+    } finally {
       setIsTableLoading(false);
-      console.error(err);
     }
   };
 
+  // Handle page change
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
 
+  // Handle rows per page change
+  const handleRowsPerPageChange = (newRowsPerPage) => {
+    setRowsPerPage(newRowsPerPage);
+    setPage(1);
+  };
+
+  // Fetch data whenever dependencies change
   useEffect(() => {
-    hasComponentPermission(permissions, 79) && getSalesReportDetailsMonthWise(null);
-  }, [page, rowsPerPage]);
-
+    if (permissions?.length && hasComponentPermission(permissions, 79)) {
+      getSalesReportDetailsMonthWise();
+    }
+  }, [page, rowsPerPage, selectedMonth, year, permissions]);
   return (
     <>
       {hasComponentPermission(permissions, 79) &&

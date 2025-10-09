@@ -94,7 +94,7 @@ const GitOperationToursList = () => {
 	//get city data
 	const getCityList = async () => {
 		try {
-			const response = await get(`/city-list`);
+			const response = await get(`${import.meta.env.VITE_WAARI_BASEURL}/city-list`);
 			setCityOptions(
 				response.data.data.map((m) => ({
 					label: m.citiesName,
