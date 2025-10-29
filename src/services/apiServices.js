@@ -1,23 +1,23 @@
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import CryptoJS from 'crypto-js';
+import axios from "axios";
+import { toast } from "react-toastify";
+import CryptoJS from "crypto-js";
 
 // Dynamically use backend URL based on environment
 // Change this in .env files:
 // VITE_WAARI_BASEURL=http://localhost:3000/api   (for development)
 // VITE_WAARI_BASEURL=https://erp.travelwithwaari.com/api/api  (for production)
-const url = import.meta.env.VITE_WAARI_BASEURL ;
+const url = import.meta.env.VITE_WAARI_BASEURL;
 
 console.log("API Base URL:", url);
 
 const api = axios.create({
   baseURL: url,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
-const key = CryptoJS.enc.Utf8.parse("1234567890123456"); 
+const key = CryptoJS.enc.Utf8.parse("1234567890123456");
 const iv = CryptoJS.enc.Utf8.parse("1234567890123456");
 
 const encryptData = (data) => {
@@ -30,14 +30,14 @@ const encryptData = (data) => {
 };
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   const clientcode = localStorage.getItem("clientcode");
   const encryptedData = encryptData(clientcode);
 
   if (token) {
-    config.headers['token'] = token;
+    config.headers["token"] = token;
   }
-  config.headers['clientcode'] = encryptedData || "";
+  config.headers["clientcode"] = encryptedData || "";
 
   return config;
 });
@@ -46,9 +46,11 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response) {
+      console.error("API Error:", error.response.status, error.response.data);
+
       if (Array.isArray(error.response.data.message)) {
         toast.error(error.response.data.message[0]);
-      } else {
+      } else if (error.response.data.message) {
         toast.error(error.response.data.message);
       }
 
@@ -58,13 +60,13 @@ api.interceptors.response.use(
           localStorage.removeItem("permissions");
           localStorage.removeItem("roleId");
           localStorage.removeItem("status");
-          window.location.href = '/sales/login';
+          window.location.href = "/sales/login";
         }, 1000);
       }
     } else if (error.request) {
       console.error("No response received:", error.request);
     } else {
-      console.error('Request setup error:', error.message);
+      console.error("Request setup error:", error.message);
     }
     return Promise.reject(error);
   }

@@ -12,6 +12,7 @@ import "./step.css";
 import Nav from "./layouts/nav";
 import Footer from "./layouts/Footer";
 import ScrollToTop from "./layouts/ScrollToTop";
+import FloatingAIButton from "./layouts/FloatingAIButton";
 /// Dashboard
 import Home from "./components/Dashboard/Home";
 import Setting from "./layouts/Setting";
@@ -601,6 +602,7 @@ function MainLayout() {
         </div>
       </div>
       <Footer />
+      <FloatingAIButton />
     </div>
   );
 }
