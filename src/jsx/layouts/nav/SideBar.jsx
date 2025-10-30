@@ -358,13 +358,13 @@ const SideBar = () => {
         </ul>
       </PerfectScrollbar>
 
-      {/* AI Assistant Button */}
+      {/* Waari AI Button */}
       <div className="ai-assistant-btn-wrapper">
         <button
           className="ai-assistant-toggle-btn"
           onClick={() => setIsAIAssistantOpen(true)}
-          title="Open AI Assistant"
-          aria-label="AI Assistant"
+          title="Open Waari AI"
+          aria-label="Waari AI"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

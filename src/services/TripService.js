@@ -174,15 +174,64 @@ export const searchTrips = async (query) => {
 };
 
 /**
+ * Generate suggested follow-up questions based on search results and context
+ */
+export const generateSuggestedQuestions = (
+  searchResults,
+  lastUserQuery = ""
+) => {
+  const { groupTours, tailorMadeTours, total } = searchResults;
+  const suggestions = [];
+
+  // If trips found, suggest specific actions
+  if (total > 0) {
+    // Suggest viewing details of first tour
+    if (groupTours.length > 0) {
+      suggestions.push(
+        `Tell me more about ${groupTours[0].tourName}`,
+        "What's the itinerary for this tour?",
+        `Show me availability for ${groupTours[0].tourName}`
+      );
+    }
+
+    if (tailorMadeTours.length > 0) {
+      suggestions.push(
+        `Details about ${tailorMadeTours[0].groupName}`,
+        "What's included in this package?"
+      );
+    }
+
+    // Generic follow-up suggestions
+    suggestions.push(
+      "Compare different tours",
+      "Show tours by price",
+      "Tours with dates near me"
+    );
+  } else {
+    // If no trips found, suggest alternatives
+    suggestions.push(
+      "Show me all available tours",
+      "Tours under ₹50,000",
+      "Popular destinations",
+      "Weekend getaways"
+    );
+  }
+
+  // Remove duplicates and limit to 4
+  return [...new Set(suggestions)].slice(0, 4);
+};
+
+/**
  * Generate AI response based on trip data
  */
-export const generateTripResponse = (searchResults) => {
+export const generateTripResponse = (searchResults, userQuery = "") => {
   const { groupTours, tailorMadeTours, total } = searchResults;
 
   if (total === 0) {
     return {
       text: "I couldn't find any trips matching your search. Try searching for a different destination or date range! 🌍",
       success: false,
+      suggestions: generateSuggestedQuestions(searchResults, userQuery),
     };
   }
 
@@ -229,5 +278,6 @@ export const generateTripResponse = (searchResults) => {
     text: response,
     success: true,
     data: { groupTours, tailorMadeTours },
+    suggestions: generateSuggestedQuestions(searchResults, userQuery),
   };
 };

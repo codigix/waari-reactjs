@@ -11,7 +11,7 @@ form#step-form-horizontal .form-group .text-label {
 [data-primary="color_2"] .wizard > .steps li.current a {
   background-color: #EB8153;
 }
-[data-primary="color_2"] .wizard .skip-email a {
+[data-primary="color_2"] .wizard .skip-email a {  
   color: #363062;
 }
 [data-primary="color_2"] .wizard > .actions li:not(.disabled) a {
